@@ -8,6 +8,7 @@ namespace tmc\gpdrshell\src;
  */
 
 use shellpress\v1_2_6\ShellPress;
+use tmc\gpdrshell\src\Components\Display;
 use tmc\gpdrshell\src\Components\License;
 use tmc\gpdrshell\src\Components\Options;
 use tmc_gpdr_shell_apf;
@@ -19,6 +20,9 @@ class App extends ShellPress {
 
 	/** @var License */
 	public $license;
+
+	/** @var Display */
+	public $display;
 
 	/**
 	 * Called automatically after core is ready.
@@ -39,6 +43,7 @@ class App extends ShellPress {
 
 		$this->options = new Options( $this );
 		$this->license = new License( $this );
+		$this->display = new Display( $this );
 
 		//  ----------------------------------------
 		//  AdminPageFramework
