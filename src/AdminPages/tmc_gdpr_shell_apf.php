@@ -32,7 +32,7 @@ class tmc_gdpr_shell_apf extends TMC_v1_0_3_AdminPageFramework {
 		$this->setInPageTabTag( 'h2' );
 
 		$this->addSubMenuItem( array(
-			'title'         =>  'gdpr Shell TMC',
+			'title'         =>  'GDPR Shell TMC',
 			'page_slug'     =>  $this->pageSlug,
 		) );
 

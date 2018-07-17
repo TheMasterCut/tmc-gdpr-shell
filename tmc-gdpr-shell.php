@@ -30,8 +30,8 @@ require dirname( __FILE__ ) . '/lib/ShellPress/src/Shared/Utility/RequirementChe
 
 $requirementChecker = new ShellPress_RequirementChecker();
 
-$checkPHP   = $requirementChecker->checkPHPVersion( '5.3', 'gdpr Shell TMC requires PHP version >= 5.3' );
-$checkWP    = $requirementChecker->checkWPVersion( '4.7', 'gdpr Shell TMC requires WP version >= 4.7' );
+$checkPHP   = $requirementChecker->checkPHPVersion( '5.3', 'GDPR Shell TMC requires PHP version >= 5.3' );
+$checkWP    = $requirementChecker->checkWPVersion( '4.7', 'GDPR Shell TMC requires WP version >= 4.7' );
 
 if( ! $checkPHP || ! $checkWP ) return;
 
@@ -44,4 +44,4 @@ use tmc\gdprshell\src\App;
 require_once( __DIR__ . '/lib/ShellPress/ShellPress.php' );
 require_once( __DIR__ . '/src/App.php' );
 
-App::initShellPress( __FILE__, 'tmc_gdpr_shell_apf', '1.0.0' );   //  <--- Remember to always change version here
+App::initShellPress( __FILE__, 'tmc_gdpr_shell', '1.0.0' );   //  <--- Remember to always change version here
