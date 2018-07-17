@@ -46,6 +46,7 @@ jQuery( document ).ready( function( $ ){
         open :                      function() {
 
             popup.elems.rootEl.removeClass( 'isHidden' );
+            document.body.classList.add( 'noScroll' );
 
         },
 
@@ -55,6 +56,7 @@ jQuery( document ).ready( function( $ ){
         close :                     function() {
 
             popup.elems.rootEl.addClass( 'isHidden' );
+            document.body.classList.remove( 'noScroll' );
 
         }
 

@@ -27,6 +27,7 @@ $maxWidth: 900px;
     max-height: 100%;
     display: block;
     visibility: visible;
+    opacity: 1;
     transition: 500ms all;
     z-index: 999999;
     overflow: auto;
@@ -34,10 +35,9 @@ $maxWidth: 900px;
 
     &.isHidden {
 
-        background: rgba( 0, 0, 0, 0 );
+        opacity: 0;
         visibility: hidden;
         pointer-events: none;
-        left: -100%;
 
     }
 
