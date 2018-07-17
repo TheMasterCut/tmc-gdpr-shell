@@ -32,9 +32,43 @@ class Display extends IComponent {
 		//  ----------------------------------------
 
 		add_action( 'wp_enqueue_scripts',                       array( $this, '_a_enqueueFrontEndScripts' ) );
-		add_action( 'wp_ajax_' . $this->popupHtmlAjaxCbName,    array( $this, '_a_popupHtmlAjaxCb' ) );
+		add_action( 'wp_footer',                                array( $this, '_a_printPopupDisplayInFooter' ) );
 
 	}
+
+	/**
+	 * Gets display of popup as HTML string.
+	 *
+	 * @param bool $isHidden
+	 *
+	 * @return string
+	 */
+	public function getDisplayOfPopup( $isHidden = false ) {
+
+		$html = '';
+
+		?>
+
+		<div class="tmc_gdpr_shell_popup">
+			<div class="tmc_gdpr_shell_close">
+				<span></span>
+			</div>
+			<div class="tmc_gdpr_shell_inside">
+
+
+
+			</div>
+		</div>
+
+		<?php
+
+		return $html;
+
+	}
+
+	//  ================================================================================
+	//  ACTIONS
+	//  ================================================================================
 
 	/**
 	 * Enqueues all scripts and styles on front-end.
@@ -45,29 +79,32 @@ class Display extends IComponent {
 	 */
 	public function _a_enqueueFrontEndScripts() {
 
-		//  ----------------------------------------
-		//  Script
-		//  ----------------------------------------
-
 		wp_enqueue_script(
-			$this::s()->getPrefix( '_front' ),
+			$this::s()->getPrefix( '_front.js' ),
 			$this::s()->getUrl( 'assets/js/front.js' ),
 			array( 'jquery' ),
+			$this::s()->getFullPluginVersion()
+		);
+
+		wp_enqueue_style(
+			$this::s()->getPrefix( '_front.scss' ),
+			$this::s()->getUrl( 'assets/css/front.css' ),
+			array(),
 			$this::s()->getFullPluginVersion()
 		);
 
 	}
 
 	/**
-	 * Prints ajax response as a HTML.
+	 * Prints out popup HTML elements in footer.
 	 *
 	 * @internal
 	 *
 	 * @return void
 	 */
-	public function _a_popupHtmlAjaxCb() {
+	public function _a_printPopupDisplayInFooter() {
 
-
+		echo $this->getDisplayOfPopup( true );
 
 	}
 
