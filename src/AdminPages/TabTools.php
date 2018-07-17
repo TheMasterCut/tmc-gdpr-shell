@@ -1,5 +1,5 @@
 <?php
-namespace tmc\gpdrshell\src\AdminPages;
+namespace tmc\gdprshell\src\AdminPages;
 
 /**
  * @author jakubkuranda@gmail.com
@@ -23,7 +23,7 @@ class TabTools extends AdminPageTab {
 		$this->pageFactory->addInPageTab( array(
 			'page_slug'     =>  $this->pageSlug,
 			'tab_slug'      =>  $this->tabSlug,
-			'title'         =>  __( 'Tools', 'tmc_gpdr_shell' ),
+			'title'         =>  __( 'Tools', 'tmc_gdpr_shell' ),
 			'order'         =>  '10'
 		) );
 

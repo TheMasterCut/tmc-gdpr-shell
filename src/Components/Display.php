@@ -1,5 +1,5 @@
 <?php
-namespace tmc\gpdrshell\src\Components;
+namespace tmc\gdprshell\src\Components;
 
 /**
  * @author jakubkuranda@gmail.com
@@ -54,19 +54,6 @@ class Display extends IComponent {
 			$this::s()->getUrl( 'assets/js/front.js' ),
 			array( 'jquery' ),
 			$this::s()->getFullPluginVersion()
-		);
-
-		//  ----------------------------------------
-		//  Additional data
-		//  ----------------------------------------
-
-		wp_localize_script(
-			$this::s()->getPrefix( '_front' ),
-			$this::s()->getPrefix( '_data' ),
-			array(
-				'adadsasd',
-				'asdasda'
-			)
 		);
 
 	}

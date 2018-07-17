@@ -1,5 +1,5 @@
 <?php
-namespace tmc\gpdrshell\src;
+namespace tmc\gdprshell\src;
 
 /**
  * @author jakubkuranda@gmail.com
@@ -8,10 +8,10 @@ namespace tmc\gpdrshell\src;
  */
 
 use shellpress\v1_2_6\ShellPress;
-use tmc\gpdrshell\src\Components\Display;
-use tmc\gpdrshell\src\Components\License;
-use tmc\gpdrshell\src\Components\Options;
-use tmc_gpdr_shell_apf;
+use tmc\gdprshell\src\Components\Display;
+use tmc\gdprshell\src\Components\License;
+use tmc\gdprshell\src\Components\Options;
+use tmc_gdpr_shell_apf;
 
 class App extends ShellPress {
 
@@ -35,7 +35,7 @@ class App extends ShellPress {
 		//  Autoloading
 		//  ----------------------------------------
 
-		$this::s()->autoloading->addNamespace( 'tmc\gpdrshell', dirname( $this::s()->getMainPluginFile() ) );
+		$this::s()->autoloading->addNamespace( 'tmc\gdprshell', dirname( $this::s()->getMainPluginFile() ) );
 
 		//  ----------------------------------------
 		//  Components
@@ -52,9 +52,9 @@ class App extends ShellPress {
 		if( is_admin() && ! wp_doing_ajax() && ! wp_doing_cron() ) {    //   Let's keep things lightweight
 
 			$this::s()->requireFile( 'lib/tmc-admin-page-framework/admin-page-framework.php', 'TMC_v1_0_3_AdminPageFramework' );
-			$this::s()->requireFile( 'src/AdminPages/tmc_gpdr_shell_apf.php' );
+			$this::s()->requireFile( 'src/AdminPages/tmc_gdpr_shell_apf.php' );
 
-			new tmc_gpdr_shell_apf( $this::s()->options->getOptionsKey(), $this::s()->getMainPluginFile() );
+			new tmc_gdpr_shell_apf( $this::s()->options->getOptionsKey(), $this::s()->getMainPluginFile() );
 
 		}
 

@@ -1,19 +1,19 @@
 <?php
 /**
- * Plugin Name: GPDR Shell TMC
- * Description: Feature-rich plugin that laverage all GPDR requirements.
+ * Plugin Name: GDPR Shell TMC
+ * Description: Feature-rich plugin that laverage all gdpr requirements.
  * Version:     1.0.0
  * Plugin URI:  https://themastercut.co
  * Author:      TheMasterCut.co
  * License:     GPL-2.0+
- * Text Domain: tmc-gpdr-shell
+ * Text Domain: tmc-gdpr-shell
  * Domain Path: /langugages
  *
- * GPDR Shell TMC is free software: you can redistribute it and/or modify
+ * gdpr Shell TMC is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2 of the License, or
  * any later version.
- * GPDR Shell TMC is distributed in the hope that it will be useful,
+ * gdpr Shell TMC is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
@@ -30,8 +30,8 @@ require dirname( __FILE__ ) . '/lib/ShellPress/src/Shared/Utility/RequirementChe
 
 $requirementChecker = new ShellPress_RequirementChecker();
 
-$checkPHP   = $requirementChecker->checkPHPVersion( '5.3', 'GPDR Shell TMC requires PHP version >= 5.3' );
-$checkWP    = $requirementChecker->checkWPVersion( '4.7', 'GPDR Shell TMC requires WP version >= 4.7' );
+$checkPHP   = $requirementChecker->checkPHPVersion( '5.3', 'gdpr Shell TMC requires PHP version >= 5.3' );
+$checkWP    = $requirementChecker->checkWPVersion( '4.7', 'gdpr Shell TMC requires WP version >= 4.7' );
 
 if( ! $checkPHP || ! $checkWP ) return;
 
@@ -39,9 +39,9 @@ if( ! $checkPHP || ! $checkWP ) return;
 //  ShellPress
 //  ----------------------------------------
 
-use tmc\gpdrshell\src\App;
+use tmc\gdprshell\src\App;
 
 require_once( __DIR__ . '/lib/ShellPress/ShellPress.php' );
 require_once( __DIR__ . '/src/App.php' );
 
-App::initShellPress( __FILE__, 'tmc_gpdr_shell_apf', '1.0.0' );   //  <--- Remember to always change version here
+App::initShellPress( __FILE__, 'tmc_gdpr_shell_apf', '1.0.0' );   //  <--- Remember to always change version here

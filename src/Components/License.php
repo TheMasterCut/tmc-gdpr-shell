@@ -1,5 +1,5 @@
 <?php
-namespace tmc\gpdrshell\src\Components;
+namespace tmc\gdprshell\src\Components;
 
 /**
  * @author jakubkuranda@gmail.com
@@ -20,7 +20,7 @@ class License extends LicenseManagerSLM {
 
 		$this->registerNotices();
 		$this->registerAutomaticChecker();
-		$this->registerAPFForm( 'tmc_gpdr_shell_apf', 'tmc_gpdr_shell_settings', 'tools' );
+		$this->registerAPFForm( 'tmc_gdpr_shell_apf', 'tmc_gdpr_shell_settings', 'tools' );
 
 	}
 

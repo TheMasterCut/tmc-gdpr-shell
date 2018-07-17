@@ -1,8 +1,8 @@
 <?php
 
-use tmc\gpdrshell\src\AdminPages\TabBasics;
-use tmc\gpdrshell\src\AdminPages\TabTools;
-use tmc\gpdrshell\src\App;
+use tmc\gdprshell\src\AdminPages\TabBasics;
+use tmc\gdprshell\src\AdminPages\TabTools;
+use tmc\gdprshell\src\App;
 
 /**
  * @author jakubkuranda@gmail.com
@@ -10,7 +10,7 @@ use tmc\gpdrshell\src\App;
  * Time: 13:58
  */
 
-class tmc_gpdr_shell_apf extends TMC_v1_0_3_AdminPageFramework {
+class tmc_gdpr_shell_apf extends TMC_v1_0_3_AdminPageFramework {
 
 	/** @var string */
 	public $pageSlug;
@@ -32,7 +32,7 @@ class tmc_gpdr_shell_apf extends TMC_v1_0_3_AdminPageFramework {
 		$this->setInPageTabTag( 'h2' );
 
 		$this->addSubMenuItem( array(
-			'title'         =>  'GPDR Shell TMC',
+			'title'         =>  'gdpr Shell TMC',
 			'page_slug'     =>  $this->pageSlug,
 		) );
 

@@ -1,5 +1,5 @@
 <?php
-namespace tmc\gpdrshell\src\Components;
+namespace tmc\gdprshell\src\Components;
 
 /**
  * @author jakubkuranda@gmail.com
