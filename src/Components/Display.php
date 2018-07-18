@@ -8,7 +8,6 @@ namespace tmc\gdprshell\src\Components;
  */
 
 use shellpress\v1_2_6\src\Shared\Components\IComponent;
-use shellpress\v1_2_6\src\Shared\Front\Models\HtmlElement;
 
 class Display extends IComponent {
 
@@ -66,7 +65,10 @@ class Display extends IComponent {
                 <div class="tmc_gdpr_shell_base_text">
                     Używamy plików cookie, aby zapewnić najlepszą jakość na naszej stronie. Więcej informacji o plikach cookie, z których korzystamy, lub o ich wyłączeniu znajdziesz w ustawieniach. Pamiętaj zawsze możesz je zmienić.
                 </div>
-                <button class="tmc_gdpr_shell_base_close">Akceptuj</button>
+                <div class="tmc_gdpr_shell_base_btns">
+                    <button class="secondary" data-tmcGdprShell-action="openSettings">Ustawienia</button>
+                    <button class="primary" data-tmcGdprShell-action="acceptAll">Akceptuj</button>
+                </div>
 
             </div>
         </div>

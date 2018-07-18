@@ -50,15 +50,8 @@ body.noScroll {
     max-width: $maxWidth;
     margin: auto;
     background: #fff;
-    padding: 0.8em 1.5em;
-
-    &:after {   //  Clearfix
-
-        display: block;
-        content: '';
-        clear: both;
-
-    }
+    padding: 0.5em;
+    display: flex;
 
 }
 
@@ -72,15 +65,29 @@ body.noScroll {
 
 }
 
-.#{$pluginPrefix}_base_close {
+.#{$pluginPrefix}_base_btns {
 
-    display: inline-block;
-    background: #2980b9;
-    border-radius: 0.3em;
-    color: #ecf0f1;
-    padding: 0.5em 1em;
-    float: right;
-    border: none;
+    white-space: nowrap;
+
+    button {
+
+        display: inline-block;
+        border-radius: 0.3em;
+        padding: 0.5em 1em;
+        margin-left: 0.3em;
+        border: none;
+
+        &.primary {
+            background: #2980b9;
+            color: #ecf0f1;
+        }
+
+        &.secondary {
+            background: #dcdde1;
+            color: #2f3640;
+        }
+
+    }
 
 }
 
