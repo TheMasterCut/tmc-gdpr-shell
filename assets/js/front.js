@@ -1,6 +1,6 @@
 jQuery( document ).ready( function( $ ){
 
-    var popup = {
+    var settingsPopup = {
 
         'elems' :                   {
             'rootEl' :                  null,   //  Popup root div.
@@ -14,8 +14,8 @@ jQuery( document ).ready( function( $ ){
          */
         initElems :                 function() {
 
-            popup.elems.rootEl      = $( '.tmc_gdpr_shell_popup' );
-            popup.elems.closeEl     = $( '.tmc_gdpr_shell_close' );
+            settingsPopup.elems.rootEl      = $( '.tmc_gdpr_shell_settings_popup' );
+            settingsPopup.elems.closeEl     = $( '.tmc_gdpr_shell_settings_close' );
 
         },
 
@@ -26,14 +26,14 @@ jQuery( document ).ready( function( $ ){
          */
         initMechanics :             function() {
 
-            popup.elems.closeEl.click( function(){
-                popup.close();
+            settingsPopup.elems.closeEl.click( function(){
+                settingsPopup.close();
             } );
 
-            popup.elems.rootEl.click( function( event ){
+            settingsPopup.elems.rootEl.click( function( event ){
 
                 if( event.target === this ){    //  Root div acts like background.
-                    popup.close();
+                    settingsPopup.close();
                 }
 
             } );
@@ -45,18 +45,72 @@ jQuery( document ).ready( function( $ ){
          */
         open :                      function() {
 
-            popup.elems.rootEl.removeClass( 'isHidden' );
+            settingsPopup.elems.rootEl.removeClass( 'isHidden' );
             document.body.classList.add( 'noScroll' );
 
         },
 
         /**
-         * @retjurn void
+         * @return void
          */
         close :                     function() {
 
-            popup.elems.rootEl.addClass( 'isHidden' );
+            settingsPopup.elems.rootEl.addClass( 'isHidden' );
             document.body.classList.remove( 'noScroll' );
+
+        }
+
+    };
+
+    var basePopup = {
+
+        'elems' :                   {
+            'rootEl' :                  null,   //  Popup root div.
+            'closeEl' :                 null,   //  Closes and accepts settings popup.
+            'openSettingsEl' :          null    //  Opens settings popup.
+        },
+
+        /**
+         * Initializes elements.
+         *
+         * @return void
+         */
+        initElems :                 function() {
+
+            basePopup.elems.rootEl          = $( '.tmc_gdpr_shell_base_popup' );
+            basePopup.elems.closeEl         = $( '.tmc_gdpr_shell_base_close' );
+            basePopup.elems.openSettingsEl  = $( '.tmc_gdpr_shell_base_open_settings' );
+
+        },
+
+        /**
+         * Initializes close actions.
+         *
+         * @return void
+         */
+        initMechanics :             function() {
+
+            basePopup.elems.closeEl.click( function(){
+                basePopup.close();
+            } );
+
+        },
+
+        /**
+         * @return void
+         */
+        open :                      function() {
+
+            basePopup.elems.rootEl.removeClass( 'isHidden' );
+
+        },
+
+        /**
+         * @return void
+         */
+        close :                     function() {
+
+            basePopup.elems.rootEl.addClass( 'isHidden' );
 
         }
 
@@ -66,7 +120,12 @@ jQuery( document ).ready( function( $ ){
     //  Init popup
     //  ----------------------------------------
 
-    popup.initElems();
-    popup.initMechanics();
+    settingsPopup.initElems();
+    settingsPopup.initMechanics();
+
+    basePopup.initElems();
+    basePopup.initMechanics();
+
+    basePopup.open();
 
 } );

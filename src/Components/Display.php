@@ -8,6 +8,7 @@ namespace tmc\gdprshell\src\Components;
  */
 
 use shellpress\v1_2_6\src\Shared\Components\IComponent;
+use shellpress\v1_2_6\src\Shared\Front\Models\HtmlElement;
 
 class Display extends IComponent {
 
@@ -37,32 +38,78 @@ class Display extends IComponent {
 	}
 
 	/**
-	 * Gets display of popup as HTML string.
+	 * Gets display of base popup as HTML string.
 	 *
 	 * @param bool $isHidden
 	 *
 	 * @return string
 	 */
-	public function getDisplayOfPopup( $isHidden = false ) {
+	public function getDisplayOfBasePopup( $isHidden = false ) {
 
-		$html = '';
+		//  Prepare classes.
 
+		$rootElClasses = array_filter(
+			array(
+				'tmc_gdpr_shell_base_popup',
+				$isHidden ? 'isHidden' : ''
+			)
+		);
+
+		//  Prepare whole HTML output.
+
+		ob_start();
 		?>
 
-		<div class="tmc_gdpr_shell_popup">
-			<div class="tmc_gdpr_shell_close">
+        <div class="<?php echo implode( ' ', $rootElClasses ); ?>">
+            <div class="tmc_gdpr_shell_base_inside">
+
+                <div class="tmc_gdpr_shell_base_text">
+                    Używamy plików cookie, aby zapewnić najlepszą jakość na naszej stronie. Więcej informacji o plikach cookie, z których korzystamy, lub o ich wyłączeniu znajdziesz w ustawieniach. Pamiętaj zawsze możesz je zmienić.
+                </div>
+                <button class="tmc_gdpr_shell_base_close">Akceptuj</button>
+
+            </div>
+        </div>
+
+		<?php
+		return ob_get_clean();
+
+	}
+
+	/**
+	 * Gets display of settings popup as HTML string.
+	 *
+	 * @param bool $isHidden
+	 *
+	 * @return string
+	 */
+	public function getDisplayOfSettingsPopup( $isHidden = false ) {
+
+	    //  Prepare classes.
+
+	    $rootElClasses = array_filter(
+            array(
+                'tmc_gdpr_shell_settings_popup',
+                $isHidden ? 'isHidden' : ''
+            )
+        );
+
+        //  Prepare whole HTML output.
+
+		ob_start();
+		?>
+
+		<div class="<?php echo implode( ' ', $rootElClasses ); ?>">
+			<div class="tmc_gdpr_shell_settings_close">
 				<span></span>
 			</div>
-			<div class="tmc_gdpr_shell_inside">
-
-
+			<div class="tmc_gdpr_shell_settings_inside">
 
 			</div>
 		</div>
 
 		<?php
-
-		return $html;
+        return ob_get_clean();
 
 	}
 
@@ -104,7 +151,8 @@ class Display extends IComponent {
 	 */
 	public function _a_printPopupDisplayInFooter() {
 
-		echo $this->getDisplayOfPopup( true );
+	    echo $this->getDisplayOfBasePopup( true );
+		echo $this->getDisplayOfSettingsPopup( true );
 
 	}
 

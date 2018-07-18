@@ -1,4 +1,11 @@
 //  ----------------------------------------
+//  Some properties
+//  ----------------------------------------
+
+$pluginPrefix: 'tmc_gdpr_shell';
+$maxWidth: 900px;
+
+//  ----------------------------------------
 //  Additional
 //  ----------------------------------------
 
@@ -10,13 +17,78 @@ body.noScroll {
 }
 
 //  ----------------------------------------
-//  Popup
+//  Base popup
 //  ----------------------------------------
 
-$pluginPrefix: 'tmc_gdpr_shell';
-$maxWidth: 900px;
+.#{$pluginPrefix}_base_popup {
 
-.#{$pluginPrefix}_popup {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    transition: 500ms all;
+    z-index: 999999;
+    background: #fff;
+
+    &.isHidden {
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+    }
+
+}
+
+.#{$pluginPrefix}_base_inside {
+
+    width: 100%;
+    max-width: $maxWidth;
+    margin: auto;
+    background: #fff;
+    padding: 0.8em 1.5em;
+
+    &:after {   //  Clearfix
+
+        display: block;
+        content: '';
+        clear: both;
+
+    }
+
+}
+
+.#{$pluginPrefix}_base_text {
+
+    background: #fff;
+    padding-right: 2em;
+    font-size: 0.8em;
+    line-height: 1.4em;
+    color: #000;
+
+}
+
+.#{$pluginPrefix}_base_close {
+
+    display: inline-block;
+    background: #2980b9;
+    border-radius: 0.3em;
+    color: #ecf0f1;
+    padding: 0.5em 1em;
+    float: right;
+    border: none;
+
+}
+
+//  ----------------------------------------
+//  Settings popup
+//  ----------------------------------------
+
+.#{$pluginPrefix}_settings_popup {
 
     position: fixed;
     top: 0;
@@ -43,17 +115,18 @@ $maxWidth: 900px;
 
 }
 
-.#{$pluginPrefix}_inside {
+.#{$pluginPrefix}_settings_inside {
 
     width: 100%;
     max-width: $maxWidth;
     margin: auto;
     background: #fff;
     padding: 1.5em;
+    border-radius: 0.5em;
 
 }
 
-.#{$pluginPrefix}_close {
+.#{$pluginPrefix}_settings_close {
 
     width: 100%;
     max-width: $maxWidth;
