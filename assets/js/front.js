@@ -8,9 +8,9 @@ jQuery( document ).ready( function( $ ){
 
         var actionNames = $( this ).attr( 'data-tmcGdprShell-click' ).split( ' ' );
 
-        for( var x = 0; x < actionNames.length; x++ ){
-            $( document ).trigger( 'tmc_gdpr_shell:' + actionNames[x] );
-        }
+        $.each( actionNames, function( key, value ){
+            $( document ).trigger( 'tmcGdprShell:' + value );
+        } );
 
     } );
 
@@ -18,21 +18,11 @@ jQuery( document ).ready( function( $ ){
     //  Objects
     //  ----------------------------------------
 
-    var settingsPopup = {
+    var tmcGdprShell = {
 
         'elems' :                   {
-            'rootEl' :                  null    //  Popup root div.
-        },
-
-        /**
-         * Initializes elements.
-         *
-         * @return void
-         */
-        initElems :                 function() {
-
-            settingsPopup.elems.rootEl = $( '.tmc_gdpr_shell_settings_popup' );
-
+            "settingsPopupRootEl" :                 $( '.tmc_gdpr_shell_settings_popup' ),
+            "basePopupRootEl" :                     $( '.tmc_gdpr_shell_base_popup' )
         },
 
         /**
@@ -43,12 +33,32 @@ jQuery( document ).ready( function( $ ){
         initEvents :                function() {
 
             //  ----------------------------------------
+            //  Open base popup
+            //  ----------------------------------------
+
+            $( document ).on( 'tmcGdprShell:openBase', function( event ) {
+
+                tmcGdprShell.elems.basePopupRootEl.removeClass( 'isHidden' );
+
+            } );
+
+            //  ----------------------------------------
+            //  Close base popup
+            //  ----------------------------------------
+
+            $( document ).on( 'tmcGdprShell:closeBase', function( event ) {
+
+                tmcGdprShell.elems.basePopupRootEl.addClass( 'isHidden' );
+
+            } );
+
+            //  ----------------------------------------
             //  Open settings popup
             //  ----------------------------------------
 
-            $( document ).on( 'tmc_gdpr_shell:openSettings', function( event ) {
+            $( document ).on( 'tmcGdprShell:openSettings', function( event ) {
 
-                settingsPopup.elems.rootEl.removeClass( 'isHidden' );
+                tmcGdprShell.elems.settingsPopupRootEl.removeClass( 'isHidden' );
                 document.body.classList.add( 'noScroll' );
 
             } );
@@ -57,111 +67,49 @@ jQuery( document ).ready( function( $ ){
             //  Close settings popup
             //  ----------------------------------------
 
-            $( document ).on( 'tmc_gdpr_shell:closeSettings', function( event ) {
+            $( document ).on( 'tmcGdprShell:closeSettings', function( event ) {
 
-                settingsPopup.elems.rootEl.addClass( 'isHidden' );
+                tmcGdprShell.elems.settingsPopupRootEl.addClass( 'isHidden' );
                 document.body.classList.remove( 'noScroll' );
 
             } );
 
-        },
-
-        /**
-         * @return void
-         */
-        open :                      function() {
-
-            $( document ).trigger( 'tmc_gdpr_shell:openSettings' );
-
-        },
-
-        /**
-         * @return void
-         */
-        close :                     function() {
-
-            $( document ).trigger( 'tmc_gdpr_shell:closeSettings' );
-
-        }
-
-    };
-
-    var basePopup = {
-
-        'elems' :                   {
-            'rootEl' :                  null    //  Popup root div.
-        },
-
-        /**
-         * Initializes elements.
-         *
-         * @return void
-         */
-        initElems :                 function() {
-
-            basePopup.elems.rootEl = $( '.tmc_gdpr_shell_base_popup' );
-
-        },
-
-        /**
-         * Initializes events.
-         *
-         * @return void
-         */
-        initEvents :                function() {
-
             //  ----------------------------------------
-            //  Open base popup
+            //  Accept all
             //  ----------------------------------------
 
-            $( document ).on( 'tmc_gdpr_shell:openBase', function( event ) {
+            $( document ).on( 'tmcGdprShell:acceptAll', function( event ) {
 
-                basePopup.elems.rootEl.removeClass( 'isHidden' );
+                console.log( 'All settings has been accepted.' );
 
             } );
 
             //  ----------------------------------------
-            //  Close base popup
+            //  Accept choosen
             //  ----------------------------------------
 
-            $( document ).on( 'tmc_gdpr_shell:closeBase', function( event ) {
+            $( document ).on( 'tmcGdprShell:acceptChoosen', function( event ) {
 
-                basePopup.elems.rootEl.addClass( 'isHidden' );
+                console.log( 'Only choosen settings has been accepted.' );
 
             } );
 
         },
 
         /**
+         * Called after everything is ready.
+         *
          * @return void
          */
-        open :                      function() {
+        ready :                         function() {
 
-            $( document ).trigger( 'tmc_gdpr_shell:openBase' );
-
-        },
-
-        /**
-         * @return void
-         */
-        close :                     function() {
-
-            $( document ).trigger( 'tmc_gdpr_shell:closeBase' );
+            $( document ).trigger( 'tmcGdprShell:openBase' );
 
         }
 
     };
 
-    //  ----------------------------------------
-    //  Init popup
-    //  ----------------------------------------
-
-    settingsPopup.initElems();
-    settingsPopup.initEvents();
-
-    basePopup.initElems();
-    basePopup.initEvents();
-
-    basePopup.open();
+    tmcGdprShell.initEvents();
+    tmcGdprShell.ready();
 
 } );

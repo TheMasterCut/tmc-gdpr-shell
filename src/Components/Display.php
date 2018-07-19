@@ -67,7 +67,7 @@ class Display extends IComponent {
                 </div>
                 <div class="tmc_gdpr_shell_base_btns">
                     <button class="secondary" data-tmcGdprShell-click="openSettings closeBase">Ustawienia</button>
-                    <button class="primary" data-tmcGdprShell-click="acceptAll">Akceptuj</button>
+                    <button class="primary" data-tmcGdprShell-click="acceptAll closeBase">Akceptuj</button>
                 </div>
 
             </div>
@@ -103,9 +103,20 @@ class Display extends IComponent {
 
 		<div class="<?php echo implode( ' ', $rootElClasses ); ?>">
 			<div class="tmc_gdpr_shell_settings_close">
-				<span data-tmcGdprShell-click="closeSettings"></span>
+				<span data-tmcGdprShell-click="acceptAll closeSettings"></span>
 			</div>
 			<div class="tmc_gdpr_shell_settings_inside">
+
+                <form class="tmc_gdpr_shell_settings_form">
+
+                    <div class="tmc_gdpr_shell_settings_list">
+
+                    </div>
+                    <div class="tmc_gdpr_shell_settings_btns">
+                        <button type="submit" class="primary" data-tmcGdprShell-click="acceptChoosen closeSettings">Zapisz ustawienia</button>
+                    </div>
+
+                </form>
 
 			</div>
 		</div>
