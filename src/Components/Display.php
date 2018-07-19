@@ -115,6 +115,9 @@ class Display extends IComponent {
                         <?php
                         $scriptPost = new ScriptPost( get_post( '13047' ) );
                         echo $scriptPost->getCheckboxHtml();
+
+                        $scriptPost = new ScriptPost( get_post( '13048' ) );
+                        echo $scriptPost->getCheckboxHtml();
                         ?>
 
                     </div>

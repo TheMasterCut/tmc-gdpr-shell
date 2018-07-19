@@ -17,7 +17,7 @@ class Scripts extends IComponent {
 	 * @return void
 	 */
 	protected function onSetUp() {
-		// TODO: Implement onSetUp() method.
+
 	}
 
 }

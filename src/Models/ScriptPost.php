@@ -21,7 +21,7 @@ class ScriptPost extends IPostModel {
 	public function getCheckboxHtml( $isChecked = null ) {
 
 		$html = '<label class="tmc_gdpr_shell_settings_checkbox">';
-		$html .= sprintf( '<input type="checkbox" name="scriptIds[]" value="%1$s" %2$s />', $this->getId(), checked( true, $isChecked, false ) );
+		$html .= sprintf( '<input type="checkbox" name="scriptId" value="%1$s" %2$s />', $this->getId(), checked( true, $isChecked, false ) );
 		$html .= '<div></div>';
 		$html .= '<i></i>';
 		$html .= '</label>';

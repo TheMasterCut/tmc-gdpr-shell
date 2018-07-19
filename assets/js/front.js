@@ -81,7 +81,6 @@ jQuery( document ).ready( function( $ ){
             $( document ).on( 'tmcGdprShell:acceptAll', function( event ) {
 
                 wpCookies.set( 'tmcGdprShellAccepted', 'all', Math.floor( Date.now() / 1000 ) + 3600 * 1000 * 24 * 365 * 10 );
-                console.log( 'All settings has been accepted.' );
 
             } );
 
@@ -91,7 +90,29 @@ jQuery( document ).ready( function( $ ){
 
             $( document ).on( 'tmcGdprShell:acceptChoosen', function( event ) {
 
-                console.log( 'Only choosen settings has been accepted.' );
+                //  TODO - maybe form serializing should be here?
+
+            } );
+
+            //  ----------------------------------------
+            //  Form submission
+            //  ----------------------------------------
+
+            tmcGdprShell.elems.settingsPopupRootEl.find( 'form' ).on( 'submit', function( event ){
+
+                event.preventDefault();
+
+                var chosenScriptIds = [];
+
+                $.each( $( this ).serializeArray(), function( index, data ){
+
+                    if( data.name === 'scriptId' ){
+                        chosenScriptIds.push( data.value );
+                    }
+
+                } );
+
+                wpCookies.set( 'tmcGdprShellAccepted', chosenScriptIds.join( ',' ), Math.floor( Date.now() / 1000 ) + 3600 * 1000 * 24 * 365 * 10 );
 
             } );
 
