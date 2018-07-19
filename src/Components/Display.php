@@ -66,8 +66,8 @@ class Display extends IComponent {
                     Używamy plików cookie, aby zapewnić najlepszą jakość na naszej stronie. Więcej informacji o plikach cookie, z których korzystamy, lub o ich wyłączeniu znajdziesz w ustawieniach. Pamiętaj zawsze możesz je zmienić.
                 </div>
                 <div class="tmc_gdpr_shell_base_btns">
-                    <button class="secondary" data-tmcGdprShell-action="openSettings">Ustawienia</button>
-                    <button class="primary" data-tmcGdprShell-action="acceptAll">Akceptuj</button>
+                    <button class="secondary" data-tmcGdprShell-click="openSettings closeBase">Ustawienia</button>
+                    <button class="primary" data-tmcGdprShell-click="acceptAll">Akceptuj</button>
                 </div>
 
             </div>
@@ -103,7 +103,7 @@ class Display extends IComponent {
 
 		<div class="<?php echo implode( ' ', $rootElClasses ); ?>">
 			<div class="tmc_gdpr_shell_settings_close">
-				<span></span>
+				<span data-tmcGdprShell-click="closeSettings"></span>
 			</div>
 			<div class="tmc_gdpr_shell_settings_inside">
 
