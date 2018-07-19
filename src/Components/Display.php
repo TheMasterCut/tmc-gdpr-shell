@@ -8,6 +8,7 @@ namespace tmc\gdprshell\src\Components;
  */
 
 use shellpress\v1_2_6\src\Shared\Components\IComponent;
+use tmc\gdprshell\src\Models\ScriptPost;
 
 class Display extends IComponent {
 
@@ -111,6 +112,11 @@ class Display extends IComponent {
 
                     <div class="tmc_gdpr_shell_settings_list">
 
+                        <?php
+                        $scriptPost = new ScriptPost( get_post( '13047' ) );
+                        echo $scriptPost->getCheckboxHtml();
+                        ?>
+
                     </div>
                     <div class="tmc_gdpr_shell_settings_btns">
                         <button type="submit" class="primary" data-tmcGdprShell-click="acceptChoosen closeSettings">Zapisz ustawienia</button>
@@ -142,7 +148,7 @@ class Display extends IComponent {
 		wp_enqueue_script(
 			$this::s()->getPrefix( '_front.js' ),
 			$this::s()->getUrl( 'assets/js/front.js' ),
-			array( 'jquery' ),
+			array( 'jquery', 'utils' ),
 			$this::s()->getFullPluginVersion()
 		);
 

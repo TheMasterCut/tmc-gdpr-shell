@@ -80,6 +80,7 @@ jQuery( document ).ready( function( $ ){
 
             $( document ).on( 'tmcGdprShell:acceptAll', function( event ) {
 
+                wpCookies.set( 'tmcGdprShellAccepted', 'all', Math.floor( Date.now() / 1000 ) + 3600 * 1000 * 24 * 365 * 10 );
                 console.log( 'All settings has been accepted.' );
 
             } );
