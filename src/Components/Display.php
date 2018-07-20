@@ -115,13 +115,29 @@ class Display extends IComponent {
 
                         <?php
 
-                        $acceptedIds = App::i()->acceptances->getAcceptedFromCookie();
+                        $acceptedIds    = App::i()->acceptances->getAcceptancesIdsFromCookie();
+                        $allAcceptances = App::i()->acceptances->getAllAcceptances();
 
-                        $scriptPost = new Acceptance( get_post( '13047' ) );
-                        echo $scriptPost->getCheckboxHtml( in_array( 13047, $acceptedIds ) );
+                        foreach( $allAcceptances as $acceptance ){
 
-                        $scriptPost = new Acceptance( get_post( '12974' ) );
-                        echo $scriptPost->getCheckboxHtml( in_array( 12974, $acceptedIds ) );
+                            //  Should checkbox be checked?
+
+                            if( in_array( 'all', $acceptedIds ) ){
+                                $isChecked = true;
+                            } else {
+                                $isChecked = in_array( $acceptance->getId(), $acceptedIds ) ? true : false;
+                            }
+
+                            //  Display HTML.
+
+                            echo '<div class="tmc_gdpr_shell_settings_list_row">';
+                            echo sprintf( '<h1>%1$s</h1>', apply_filters( 'the_title', $acceptance->getTitle() ) );
+	                        echo $acceptance->getCheckboxHtml( $isChecked );
+                            echo sprintf( '<desc>%1$s</desc>', apply_filters( 'the_content', $acceptance->getContent() ) );
+                            echo '</div>';
+
+                        }
+
                         ?>
 
                     </div>

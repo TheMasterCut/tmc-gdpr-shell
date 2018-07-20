@@ -8,6 +8,8 @@ namespace tmc\gdprshell\src\Components;
  */
 
 use shellpress\v1_2_6\src\Shared\Components\IComponent;
+use tmc\gdprshell\src\Models\Acceptance;
+use WP_Query;
 
 class Acceptances extends IComponent {
 
@@ -21,21 +23,84 @@ class Acceptances extends IComponent {
 	}
 
 	/**
-	 * Gets accepted scripts from cookie.
+	 * Returns acceptance object or null if given id does not exist.
 	 *
-	 * @return int[]
+	 * @param int[]|int $ids
+	 *
+	 * @return Acceptance[]|null
 	 */
-	public function getAcceptedFromCookie() {
+	public function getAcceptancesByIds( $ids ) {
 
-		$ids = array();
+		$acceptances = array();
 
-		if( isset( $_COOKIE['tmcGdprShellAccepted'] ) ){
+		foreach( (array) $ids as $id ){
 
-			$ids = explode( ',', $_COOKIE['tmcGdprShellAccepted'] );
+			$post = get_post( $id );
+			if( $post ){
+				$acceptances[] = new Acceptance( $post );
+			}
 
 		}
 
-		return $ids;
+		return $acceptances;
+
+	}
+
+	/**
+	 * Does database search and returns all published acceptances.
+	 *
+	 * @return Acceptance[]
+	 */
+	public function getAllAcceptances() {
+
+		$query = new WP_Query( array(
+			'post_type'     =>  Acceptance::POST_TYPE,
+			'nopaging'      =>  true,
+			'post_status'   =>  'publish'
+		) );
+
+		return $this->getAcceptancesWithQuery( $query );
+
+	}
+
+	/**
+	 * Uses given WP_Query object to wrap all found posts with Acceptance object.
+	 *
+	 * @param WP_Query $query
+	 *
+	 * @return Acceptance[]
+	 */
+	public function getAcceptancesWithQuery( $query ) {
+
+		$acceptances = array();
+
+		foreach( $query->get_posts() as $post ){
+			$acceptances[] = new Acceptance( $post );
+		}
+
+		return $acceptances;
+
+	}
+
+	/**
+	 * Gets accepted scripts from cookie.
+	 * Remember, it may be array of integers or array with one value: all.
+	 *
+	 * @return string[]
+	 */
+	public function getAcceptancesIdsFromCookie() {
+
+		$acceptances = array();
+
+		if( isset( $_COOKIE['tmcGdprShellAccepted'] ) ){
+
+			$cookie = $_COOKIE['tmcGdprShellAccepted'];
+
+			return explode( ',', $cookie );
+
+		}
+
+		return $acceptances;
 
 	}
 

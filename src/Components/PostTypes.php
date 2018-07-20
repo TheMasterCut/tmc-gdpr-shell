@@ -58,7 +58,7 @@ class PostTypes extends IComponent {
 			'show_in_rest'          =>  false,
 			'menu_position'         =>  5,
 			'menu_icon'             =>  'dashicons-forms',
-			'supports'              =>  'title'
+			'supports'              =>  array( 'title', 'editor' )
 		) );
 
 		if( is_wp_error( $result ) ) wp_die( $result->get_error_message() );
