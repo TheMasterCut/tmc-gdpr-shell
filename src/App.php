@@ -11,7 +11,8 @@ use shellpress\v1_2_6\ShellPress;
 use tmc\gdprshell\src\Components\Display;
 use tmc\gdprshell\src\Components\License;
 use tmc\gdprshell\src\Components\Options;
-use tmc\gdprshell\src\Components\Scripts;
+use tmc\gdprshell\src\Components\Acceptances;
+use tmc\gdprshell\src\Components\PostTypes;
 use tmc_gdpr_shell_apf;
 
 class App extends ShellPress {
@@ -25,8 +26,11 @@ class App extends ShellPress {
 	/** @var Display */
 	public $display;
 
-	/** @var Scripts */
-	public $scripts;
+	/** @var Acceptances */
+	public $acceptances;
+
+	/** @var PostTypes */
+	public $postTypes;
 
 	/**
 	 * Called automatically after core is ready.
@@ -45,10 +49,11 @@ class App extends ShellPress {
 		//  Components
 		//  ----------------------------------------
 
-		$this->options = new Options( $this );
-		$this->license = new License( $this );
-		$this->display = new Display( $this );
-		$this->scripts = new Scripts( $this );
+		$this->options      = new Options( $this );
+		$this->postTypes    = new PostTypes( $this );
+		$this->license      = new License( $this );
+		$this->display      = new Display( $this );
+		$this->acceptances  = new Acceptances( $this );
 
 		//  ----------------------------------------
 		//  AdminPageFramework

@@ -98,16 +98,6 @@ jQuery( document ).ready( function( $ ){
             } );
 
             //  ----------------------------------------
-            //  Accept choosen
-            //  ----------------------------------------
-
-            $( document ).on( 'tmcGdprShell:acceptChoosen', function( event ) {
-
-                //  TODO - maybe form serializing should be here?
-
-            } );
-
-            //  ----------------------------------------
             //  Form submission
             //  ----------------------------------------
 
@@ -119,7 +109,7 @@ jQuery( document ).ready( function( $ ){
 
                 $.each( $( this ).serializeArray(), function( index, data ){
 
-                    if( data.name === 'scriptId' ){
+                    if( data.name === 'acceptanceId' ){
                         acceptedScriptIds.push( data.value );
                     }
 

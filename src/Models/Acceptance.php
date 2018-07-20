@@ -9,9 +9,9 @@ namespace tmc\gdprshell\src\Models;
 
 use shellpress\v1_2_6\src\Shared\StorageModels\IPostModel;
 
-class ScriptPost extends IPostModel {
+class Acceptance extends IPostModel {
 
-	const POST_TYPE = 'tmc_gdpr_shell_script';
+	const POST_TYPE = 'tmc_gdpr_acceptance';
 
 	/**
 	 * @param bool $isChecked
@@ -21,7 +21,7 @@ class ScriptPost extends IPostModel {
 	public function getCheckboxHtml( $isChecked = null ) {
 
 		$html = '<label class="tmc_gdpr_shell_settings_checkbox">';
-		$html .= sprintf( '<input type="checkbox" name="scriptId" value="%1$s" %2$s />', $this->getId(), checked( true, $isChecked, false ) );
+		$html .= sprintf( '<input type="checkbox" name="acceptanceId" value="%1$s" %2$s />', $this->getId(), checked( true, $isChecked, false ) );
 		$html .= '<div></div>';
 		$html .= '<i></i>';
 		$html .= '</label>';

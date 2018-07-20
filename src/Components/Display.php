@@ -9,7 +9,7 @@ namespace tmc\gdprshell\src\Components;
 
 use shellpress\v1_2_6\src\Shared\Components\IComponent;
 use tmc\gdprshell\src\App;
-use tmc\gdprshell\src\Models\ScriptPost;
+use tmc\gdprshell\src\Models\Acceptance;
 
 class Display extends IComponent {
 
@@ -115,12 +115,12 @@ class Display extends IComponent {
 
                         <?php
 
-                        $acceptedIds = App::i()->scripts->getAcceptedFromCookie();
+                        $acceptedIds = App::i()->acceptances->getAcceptedFromCookie();
 
-                        $scriptPost = new ScriptPost( get_post( '13047' ) );
+                        $scriptPost = new Acceptance( get_post( '13047' ) );
                         echo $scriptPost->getCheckboxHtml( in_array( 13047, $acceptedIds ) );
 
-                        $scriptPost = new ScriptPost( get_post( '12974' ) );
+                        $scriptPost = new Acceptance( get_post( '12974' ) );
                         echo $scriptPost->getCheckboxHtml( in_array( 12974, $acceptedIds ) );
                         ?>
 

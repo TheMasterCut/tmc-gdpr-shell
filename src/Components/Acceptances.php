@@ -9,7 +9,7 @@ namespace tmc\gdprshell\src\Components;
 
 use shellpress\v1_2_6\src\Shared\Components\IComponent;
 
-class Scripts extends IComponent {
+class Acceptances extends IComponent {
 
 	/**
 	 * Called on creation of component.
