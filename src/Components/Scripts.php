@@ -20,4 +20,23 @@ class Scripts extends IComponent {
 
 	}
 
+	/**
+	 * Gets accepted scripts from cookie.
+	 *
+	 * @return int[]
+	 */
+	public function getAcceptedFromCookie() {
+
+		$ids = array();
+
+		if( isset( $_COOKIE['tmcGdprShellAccepted'] ) ){
+
+			$ids = explode( ',', $_COOKIE['tmcGdprShellAccepted'] );
+
+		}
+
+		return $ids;
+
+	}
+
 }

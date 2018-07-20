@@ -8,6 +8,7 @@ namespace tmc\gdprshell\src\Components;
  */
 
 use shellpress\v1_2_6\src\Shared\Components\IComponent;
+use tmc\gdprshell\src\App;
 use tmc\gdprshell\src\Models\ScriptPost;
 
 class Display extends IComponent {
@@ -113,16 +114,19 @@ class Display extends IComponent {
                     <div class="tmc_gdpr_shell_settings_list">
 
                         <?php
-                        $scriptPost = new ScriptPost( get_post( '13047' ) );
-                        echo $scriptPost->getCheckboxHtml();
 
-                        $scriptPost = new ScriptPost( get_post( '13048' ) );
-                        echo $scriptPost->getCheckboxHtml();
+                        $acceptedIds = App::i()->scripts->getAcceptedFromCookie();
+
+                        $scriptPost = new ScriptPost( get_post( '13047' ) );
+                        echo $scriptPost->getCheckboxHtml( in_array( 13047, $acceptedIds ) );
+
+                        $scriptPost = new ScriptPost( get_post( '12974' ) );
+                        echo $scriptPost->getCheckboxHtml( in_array( 12974, $acceptedIds ) );
                         ?>
 
                     </div>
                     <div class="tmc_gdpr_shell_settings_btns">
-                        <button type="submit" class="primary" data-tmcGdprShell-click="acceptChoosen closeSettings">Zapisz ustawienia</button>
+                        <button type="submit" class="primary" data-tmcGdprShell-click="closeSettings">Zapisz ustawienia</button>
                     </div>
 
                 </form>

@@ -26,6 +26,19 @@ jQuery( document ).ready( function( $ ){
         },
 
         /**
+         * Converts given number of days to timestamp from current time.
+         *
+         * @param days int
+         *
+         * @return int
+         */
+        getDaysAfterNow :           function( days ) {
+
+            return Math.floor( Date.now() / 1000 ) + 3600 * 1000 * 24 * days;
+
+        },
+
+        /**
          * Initializes close actions.
          *
          * @return void
@@ -80,7 +93,7 @@ jQuery( document ).ready( function( $ ){
 
             $( document ).on( 'tmcGdprShell:acceptAll', function( event ) {
 
-                wpCookies.set( 'tmcGdprShellAccepted', 'all', Math.floor( Date.now() / 1000 ) + 3600 * 1000 * 24 * 365 * 10 );
+                wpCookies.set( 'tmcGdprShellAccepted', 'all', tmcGdprShell.getDaysAfterNow( 365 ) );
 
             } );
 
@@ -102,17 +115,17 @@ jQuery( document ).ready( function( $ ){
 
                 event.preventDefault();
 
-                var chosenScriptIds = [];
+                var acceptedScriptIds = [];
 
                 $.each( $( this ).serializeArray(), function( index, data ){
 
                     if( data.name === 'scriptId' ){
-                        chosenScriptIds.push( data.value );
+                        acceptedScriptIds.push( data.value );
                     }
 
                 } );
 
-                wpCookies.set( 'tmcGdprShellAccepted', chosenScriptIds.join( ',' ), Math.floor( Date.now() / 1000 ) + 3600 * 1000 * 24 * 365 * 10 );
+                wpCookies.set( 'tmcGdprShellAccepted', acceptedScriptIds.join( ',' ), tmcGdprShell.getDaysAfterNow( 365 ) );
 
             } );
 
