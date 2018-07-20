@@ -115,8 +115,8 @@ class Display extends IComponent {
 
                         <?php
 
-                        $acceptedIds    = App::i()->acceptances->getAcceptancesIdsFromCookie();
-                        $allAcceptances = App::i()->acceptances->getAllAcceptances();
+                        $acceptedIds    = (array) App::i()->acceptances->getAcceptancesIdsFromCookie();
+                        $allAcceptances = (array) App::i()->acceptances->getAllAcceptances();
 
                         foreach( $allAcceptances as $acceptance ){
 

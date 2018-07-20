@@ -128,6 +128,10 @@ jQuery( document ).ready( function( $ ){
          */
         ready :                         function() {
 
+            // if( ! wpCookies.get( 'tmcGdprShellAccepted' ) ){
+            //     $( document ).trigger( 'tmcGdprShell:openBase' );
+            // }
+
             $( document ).trigger( 'tmcGdprShell:openBase' );
 
         }

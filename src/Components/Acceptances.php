@@ -96,7 +96,7 @@ class Acceptances extends IComponent {
 
 			$cookie = $_COOKIE['tmcGdprShellAccepted'];
 
-			return explode( ',', $cookie );
+			$acceptances = explode( ',', $cookie );
 
 		}
 
