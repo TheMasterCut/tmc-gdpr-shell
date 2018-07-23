@@ -56,6 +56,17 @@ class Options extends IComponent {
 
 	}
 
+	/**
+	 * @param string $version
+	 *
+	 * @return void
+	 */
+	public function setAcceptancesVersion( $version ) {
+
+		$this::s()->options->set( 'control/acceptancesVersion', $version );
+
+	}
+
 	//  ================================================================================
 	//  ACTIONS
 	//  ================================================================================

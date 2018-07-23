@@ -57,7 +57,7 @@ class tmc_gdpr_shell_apf extends TMC_v1_0_3_AdminPageFramework {
 		//  Tabs
 		//  ----------------------------------------
 
-		new TabBasics( $this, $this->pageSlug, 'basics' );
+//		new TabBasics( $this, $this->pageSlug, 'basics' );
 		new TabTools( $this, $this->pageSlug, 'tools' );
 
 	}

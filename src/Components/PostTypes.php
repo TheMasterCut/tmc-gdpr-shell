@@ -8,6 +8,7 @@ namespace tmc\gdprshell\src\Components;
  */
 
 use shellpress\v1_2_6\src\Shared\Components\IComponent;
+use tmc\gdprshell\src\App;
 use tmc\gdprshell\src\Models\Acceptance;
 
 class PostTypes extends IComponent {
@@ -19,7 +20,8 @@ class PostTypes extends IComponent {
 	 */
 	protected function onSetUp() {
 
-		add_action( 'init', array( $this, '_a_registerPostTypes' ) );
+		add_action( 'init',                                 array( $this, '_a_registerPostTypes' ) );
+		add_action( 'save_post_' . Acceptance::POST_TYPE,   array( $this, '_a_changeVersionOfCookies' ) );
 
 	}
 
@@ -62,6 +64,25 @@ class PostTypes extends IComponent {
 		) );
 
 		if( is_wp_error( $result ) ) wp_die( $result->get_error_message() );
+
+	}
+
+	/**
+	 * Changes version of cookies.
+	 * Called on save_post.
+	 *
+	 * @param int $id
+	 *
+	 * @return void
+	 */
+	public function _a_changeVersionOfCookies( $id ) {
+
+		if( ! wp_is_post_revision( $id ) && App::i()->options->getAcceptancesUpdateBehaviour() === 'resetEveryTime' ){
+
+			App::i()->options->setAcceptancesVersion( time() );
+			App::s()->options->flush();
+
+		}
 
 	}
 
