@@ -8,10 +8,14 @@ namespace tmc\gdprshell\src\Components;
  */
 
 use shellpress\v1_2_6\src\Shared\Components\IComponent;
+use tmc\gdprshell\src\App;
 use tmc\gdprshell\src\Models\Acceptance;
 use WP_Query;
 
 class Acceptances extends IComponent {
+
+	/** @var null|Acceptance[] */
+	private $acceptancesTemp = null;
 
 	/**
 	 * Called on creation of component.
@@ -19,6 +23,13 @@ class Acceptances extends IComponent {
 	 * @return void
 	 */
 	protected function onSetUp() {
+
+		//  ----------------------------------------
+		//  Actions
+		//  ----------------------------------------
+
+		add_action( 'wp_head',      array( $this, '_a_addCodesInHeader' ) );
+		add_action( 'wp_footer',    array( $this, '_a_addCodesInFooter' ) );
 
 	}
 
@@ -83,10 +94,10 @@ class Acceptances extends IComponent {
 	}
 
 	/**
-	 * Gets accepted scripts from cookie.
+	 * Gets accepted IDs of scripts from cookie.
 	 * Remember, it may be array of integers or array with one value: all.
 	 *
-	 * @return string[]
+	 * @return string[]|int[]|mixed
 	 */
 	public function getAcceptancesIdsFromCookie() {
 
@@ -101,6 +112,69 @@ class Acceptances extends IComponent {
 		}
 
 		return $acceptances;
+
+	}
+
+	/**
+	 * Gets accepted scripts from cookie.
+	 *
+	 * @return Acceptance[]
+	 */
+	public function getChosenAcceptances() {
+
+		if( is_null( $this->acceptancesTemp ) ){
+
+			$ids = $this->getAcceptancesIdsFromCookie();
+
+			if( in_array( 'all', $ids ) ){
+				$this->acceptancesTemp = $this->getAllAcceptances();
+			} else {
+				$this->acceptancesTemp = $this->getAcceptancesByIds( $ids );
+			}
+
+		}
+
+		return $this->acceptancesTemp;
+
+	}
+
+	//  ================================================================================
+	//  ACTIONS
+	//  ================================================================================
+
+	/**
+	 * Prints out code in header.
+	 * Called on wp_head.
+	 *
+	 * @internal
+	 *
+	 * @return void
+	 */
+	public function _a_addCodesInHeader() {
+
+//		if( ! App::i()->license->isActive() ) return;
+
+		foreach( $this->getChosenAcceptances() as $acceptance ){
+			echo $acceptance->getHeaderCode();
+		}
+
+	}
+
+	/**
+	 * Prints out code in footer.
+	 * Called on wp_footer.
+	 *
+	 * @internal
+	 *
+	 * @return void
+	 */
+	public function _a_addCodesInFooter() {
+
+//		if( ! App::i()->license->isActive() ) return;
+
+		foreach( $this->getChosenAcceptances() as $acceptance ){
+			echo $acceptance->getFooterCode();
+		}
 
 	}
 

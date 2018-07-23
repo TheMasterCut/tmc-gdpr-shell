@@ -8,6 +8,7 @@ namespace tmc\gdprshell\src\Models;
  */
 
 use shellpress\v1_2_6\src\Shared\StorageModels\IPostModel;
+use tmc\gdprshell\src\App;
 
 class Acceptance extends IPostModel {
 
@@ -27,6 +28,32 @@ class Acceptance extends IPostModel {
 		$html .= '</label>';
 
 		return $html;
+
+	}
+
+	/**
+	 * Returns code from post metabox.
+	 *
+	 * @return string
+	 */
+	public function getHeaderCode() {
+
+		$scripts = (array) $this->getMeta( App::s()->getPrefix( '_scripts' ), array() );
+
+		return isset( $scripts['header'] ) ? $scripts['header'] : '';
+
+	}
+
+	/**
+	 * Returns code from post metabox.
+	 *
+	 * @return string
+	 */
+	public function getFooterCode() {
+
+		$scripts = (array) $this->getMeta( App::s()->getPrefix( '_scripts' ), array() );
+
+		return isset( $scripts['footer'] ) ? $scripts['footer'] : '';
 
 	}
 

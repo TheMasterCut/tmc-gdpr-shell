@@ -9,7 +9,6 @@ namespace tmc\gdprshell\src\Components;
 
 use shellpress\v1_2_6\src\Shared\Components\IComponent;
 use tmc\gdprshell\src\App;
-use tmc\gdprshell\src\Models\Acceptance;
 
 class Display extends IComponent {
 

@@ -3,6 +3,7 @@
 use tmc\gdprshell\src\AdminPages\TabBasics;
 use tmc\gdprshell\src\AdminPages\TabTools;
 use tmc\gdprshell\src\App;
+use tmc\gdprshell\src\Models\Acceptance;
 
 /**
  * @author jakubkuranda@gmail.com
@@ -28,11 +29,12 @@ class tmc_gdpr_shell_apf extends TMC_v1_0_3_AdminPageFramework {
 		//  ----------------------------------------
 
 		$this->oProp->bShowDebugInfo = false;
-		$this->setRootMenuPage( 'Settings' );
+		$this->setRootMenuPageBySlug( 'edit.php?post_type=' . Acceptance::POST_TYPE );
 		$this->setInPageTabTag( 'h2' );
 
 		$this->addSubMenuItem( array(
-			'title'         =>  'GDPR Shell TMC',
+			'title'         =>  __( 'Settings - GDPR Shell TMC', 'tmc_gdpr_shell' ),
+			'menu_title'    =>  __( 'Settings', 'tmc_gdpr_shell' ),
 			'page_slug'     =>  $this->pageSlug,
 		) );
 
