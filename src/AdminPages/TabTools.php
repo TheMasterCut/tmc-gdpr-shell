@@ -33,6 +33,49 @@ class TabTools extends AdminPageTab {
 	 * Called while current component is loaded.
 	 */
 	public function load() {
-		// TODO: Implement load() method.
+
+		//  ----------------------------------------
+		//  Sections
+		//  ----------------------------------------
+
+		$this->pageFactory->addSettingSections(
+			array(
+				'section_id'        =>  'control',
+				'title'             =>  __( 'Control', 'tmc_gdpr_shell' )
+			)
+		);
+
+		//  ----------------------------------------
+		//  Fields
+		//  ----------------------------------------
+
+		$this->pageFactory->addSettingFields(
+			'control',
+			array(
+				'field_id'          =>  'acceptancesUpdateBehaviour',
+				'type'              =>  'radio',
+				'title'             =>  __( 'Acceptances update behaviour', 'tmc_gdpr_shell' ),
+				'label'             =>  array(
+					'resetEveryTime'    =>  __( 'Reset cookies every time any of acceptances has been modified.', 'tmc_gdpr' ),
+					'ignore'            =>  __( 'Ignore modifications. I will force reset manually.', 'tmc_gdpr' ),
+				)
+			),
+			array(
+				'field_id'          =>  'acceptancesVersionSubmit',
+				'type'              =>  'submit',
+				'title'             =>  __( 'Version of acceptance', 'tmc_gdpr_shell' ),
+				'save'              =>  false,
+				'value'             =>  __( 'Force reset acceptances now', 'tmc_gdpr_shell' ),
+				'description'       =>  array(
+					__( 'When you press this button, visitors will have to accept cookies again.', 'tmc_gdpr_shell' )
+				)
+			),
+			array(
+				'field_id'          =>  'acceptancesVersion',
+				'type'              =>  'text',
+				'title'             =>  'acceptanceVersion'
+			)
+		);
+
 	}
 }

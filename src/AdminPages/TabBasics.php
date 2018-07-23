@@ -33,7 +33,9 @@ class TabBasics extends AdminPageTab {
 	 * Called while current component is loaded.
 	 */
 	public function load() {
-		// TODO: Implement load() method.
+
+
+
 	}
 
 }

@@ -23,7 +23,10 @@ class Options extends IComponent {
 		//  ----------------------------------------
 
 		$this::s()->options->setDefaultOptions( array(
-
+			'control'                           =>  array(
+				'acceptancesUpdateBehaviour'        =>  'resetEveryTime',
+				'acceptancesVersion'                =>  time()
+			)
 		) );
 
 		//  ----------------------------------------
