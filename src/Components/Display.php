@@ -60,7 +60,7 @@ class Display extends IComponent {
 		ob_start();
 		?>
 
-        <div class="<?php echo implode( ' ', $rootElClasses ); ?>">
+        <div class="<?php echo implode( ' ', $rootElClasses ); ?>" data-version="<?php echo App::i()->options->getAcceptancesVersion(); ?>">
             <div class="tmc_gdpr_shell_base_inside">
 
                 <div class="tmc_gdpr_shell_base_text">

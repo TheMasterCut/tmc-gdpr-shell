@@ -39,6 +39,28 @@ class Options extends IComponent {
 	}
 
 	/**
+	 * @return string
+	 */
+	public function getAcceptancesUpdateBehaviour() {
+
+		return $this::s()->options->get( 'control/acceptancesUpdateBehaviour' );
+
+	}
+
+	/**
+	 * @return string|null
+	 */
+	public function getAcceptancesVersion() {
+
+		return $this::s()->options->get( 'control/acceptancesVersion' );
+
+	}
+
+	//  ================================================================================
+	//  ACTIONS
+	//  ================================================================================
+
+	/**
 	 * @internal
 	 *
 	 * @return void

@@ -8,6 +8,8 @@ namespace tmc\gdprshell\src\AdminPages;
  */
 
 use shellpress\v1_2_6\src\Shared\AdminPageFramework\AdminPageTab;
+use tmc\gdprshell\src\App;
+use TMC_v1_0_3_AdminPageFramework;
 
 class TabTools extends AdminPageTab {
 
@@ -15,6 +17,12 @@ class TabTools extends AdminPageTab {
 	 * Declaration of current element.
 	 */
 	public function setUp() {
+
+		//  ----------------------------------------
+		//  Filters
+		//  ----------------------------------------
+
+		add_filter( 'validation_' . $this->pageFactoryClassName, array( $this, '_f_processForceResetSubmit' ), 10, 4 );
 
 		//  ----------------------------------------
 		//  Definition
@@ -41,7 +49,9 @@ class TabTools extends AdminPageTab {
 		$this->pageFactory->addSettingSections(
 			array(
 				'section_id'        =>  'control',
-				'title'             =>  __( 'Control', 'tmc_gdpr_shell' )
+				'title'             =>  __( 'Control', 'tmc_gdpr_shell' ),
+				'page_slug'         =>  $this->pageSlug,
+				'tab_slug'          =>  $this->tabSlug,
 			)
 		);
 
@@ -68,14 +78,51 @@ class TabTools extends AdminPageTab {
 				'value'             =>  __( 'Force reset acceptances now', 'tmc_gdpr_shell' ),
 				'description'       =>  array(
 					__( 'When you press this button, visitors will have to accept cookies again.', 'tmc_gdpr_shell' )
+				),
+				'attributes'        =>  array(
+					'class'             =>  'button button-secondary'
 				)
 			),
 			array(
 				'field_id'          =>  'acceptancesVersion',
 				'type'              =>  'text',
-				'title'             =>  'acceptanceVersion'
+				'title'             =>  'acceptanceVersion',
+				'hidden'            =>  true
+			),
+			array(
+				'field_id'          =>  'submit',
+				'type'              =>  'submit',
+				'value'             =>  __( 'Update settings', 'tmc_gdpr_shell' ),
+				'save'              =>  false
 			)
 		);
 
 	}
+
+	//  ================================================================================
+	//  FILTERS
+	//  ================================================================================
+
+	/**
+	 * @param array $newInput
+	 * @param array $oldInput
+	 * @param TMC_v1_0_3_AdminPageFramework $factory
+	 * @param array $submitInput
+	 *
+	 * @return array
+	 */
+	public function _f_processForceResetSubmit( $newInput, $oldInput, $factory, $submitInput ) {
+
+		if( $submitInput['input_name'] === App::s()->options->getOptionsKey() . '|control|acceptancesVersionSubmit' ){
+
+			$newInput['control']['acceptancesVersion'] = time();
+
+			$factory->setSettingNotice( __( 'Done. Every user will have to accept cookies again.', 'tmc_gdpr_shell' ), 'updated' );
+
+		}
+
+		return $newInput;
+
+	}
+
 }

@@ -21,9 +21,10 @@ jQuery( document ).ready( function( $ ){
     var tmcGdprShell = {
 
         'elems' :                   {
-            "settingsPopupRootEl" :                 $( '.tmc_gdpr_shell_settings_popup' ),
-            "basePopupRootEl" :                     $( '.tmc_gdpr_shell_base_popup' )
+            "settingsPopupRootEl" :     null,
+            "basePopupRootEl" :         null
         },
+        'version' :                 null,
 
         /**
          * Converts given number of days to timestamp from current time.
@@ -35,6 +36,19 @@ jQuery( document ).ready( function( $ ){
         getDaysAfterNow :           function( days ) {
 
             return Math.floor( Date.now() / 1000 ) + 3600 * 1000 * 24 * days;
+
+        },
+
+        /**
+         * Initializes all of properties.
+         *
+         * @return void
+         */
+        initProperties :            function() {
+
+            tmcGdprShell.elems.settingsPopupRootEl  = $( '.tmc_gdpr_shell_settings_popup' );
+            tmcGdprShell.elems.basePopupRootEl      = $( '.tmc_gdpr_shell_base_popup' );
+            tmcGdprShell.version                    = tmcGdprShell.elems.basePopupRootEl.attr( 'data-version' );
 
         },
 
@@ -94,6 +108,7 @@ jQuery( document ).ready( function( $ ){
             $( document ).on( 'tmcGdprShell:acceptAll', function( event ) {
 
                 wpCookies.set( 'tmcGdprShellAccepted', 'all', tmcGdprShell.getDaysAfterNow( 365 ) );
+                wpCookies.set( 'tmcGdprShellVersion', tmcGdprShell.version, tmcGdprShell.getDaysAfterNow( 365 ) );
 
             } );
 
@@ -116,6 +131,7 @@ jQuery( document ).ready( function( $ ){
                 } );
 
                 wpCookies.set( 'tmcGdprShellAccepted', acceptedScriptIds.join( ',' ), tmcGdprShell.getDaysAfterNow( 365 ) );
+                wpCookies.set( 'tmcGdprShellVersion', tmcGdprShell.version, tmcGdprShell.getDaysAfterNow( 365 ) );
 
             } );
 
@@ -128,16 +144,15 @@ jQuery( document ).ready( function( $ ){
          */
         ready :                         function() {
 
-            // if( ! wpCookies.get( 'tmcGdprShellAccepted' ) ){
-            //     $( document ).trigger( 'tmcGdprShell:openBase' );
-            // }
-
-            $( document ).trigger( 'tmcGdprShell:openBase' );
+            if( wpCookies.get( 'tmcGdprShellVersion' ) !== tmcGdprShell.version ){
+                $( document ).trigger( 'tmcGdprShell:openBase' );
+            }
 
         }
 
     };
 
+    tmcGdprShell.initProperties();
     tmcGdprShell.initEvents();
     tmcGdprShell.ready();
 
