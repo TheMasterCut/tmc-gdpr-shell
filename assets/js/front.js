@@ -67,7 +67,9 @@ jQuery( document ).ready( function( $ ){
 
             $( document ).on( 'tmcGdprShell:openBase', function( event ) {
 
-                tmcGdprShell.elems.cookiePopupRootEl.removeClass( 'isHidden' );
+                if( tmcGdprShell.elems.cookiePopupRootEl ){
+                    tmcGdprShell.elems.cookiePopupRootEl.removeClass( 'isHidden' );
+                }
 
             } );
 
@@ -77,7 +79,9 @@ jQuery( document ).ready( function( $ ){
 
             $( document ).on( 'tmcGdprShell:closeBase', function( event ) {
 
-                tmcGdprShell.elems.cookiePopupRootEl.addClass( 'isHidden' );
+                if( tmcGdprShell.elems.cookiePopupRootEl ) {
+                    tmcGdprShell.elems.cookiePopupRootEl.addClass('isHidden');
+                }
 
             } );
 
@@ -87,8 +91,10 @@ jQuery( document ).ready( function( $ ){
 
             $( document ).on( 'tmcGdprShell:openSettings', function( event ) {
 
-                tmcGdprShell.elems.settingsPopupRootEl.removeClass( 'isHidden' );
-                document.body.classList.add( 'noScroll' );
+                if( tmcGdprShell.elems.settingsPopupRootEl ) {
+                    tmcGdprShell.elems.settingsPopupRootEl.removeClass('isHidden');
+                    document.body.classList.add('noScroll');
+                }
 
             } );
 
@@ -98,8 +104,10 @@ jQuery( document ).ready( function( $ ){
 
             $( document ).on( 'tmcGdprShell:closeSettings', function( event ) {
 
-                tmcGdprShell.elems.settingsPopupRootEl.addClass( 'isHidden' );
-                document.body.classList.remove( 'noScroll' );
+                if( tmcGdprShell.elems.settingsPopupRootEl ) {
+                    tmcGdprShell.elems.settingsPopupRootEl.addClass('isHidden');
+                    document.body.classList.remove('noScroll');
+                }
 
             } );
 
@@ -107,9 +115,11 @@ jQuery( document ).ready( function( $ ){
             //  Open acceptance opener
             //  ----------------------------------------
 
-            $( document ).on( 'tmcGdprShell:openAcceptanceOpener', function( event ) {
+            $( document ).on( 'tmcGdprShell:openAcceptancesOpener', function( event ) {
 
-                tmcGdprShell.elems.acceptancesOpenerRootEl.removeClass( 'isHidden' );
+                if( tmcGdprShell.elems.acceptancesOpenerRootEl ) {
+                    tmcGdprShell.elems.acceptancesOpenerRootEl.removeClass('isHidden');
+                }
 
             } );
 
@@ -117,9 +127,11 @@ jQuery( document ).ready( function( $ ){
             //  Close acceptance opener
             //  ----------------------------------------
 
-            $( document ).on( 'tmcGdprShell:closeAcceptanceOpener', function( event ) {
+            $( document ).on( 'tmcGdprShell:closeAcceptancesOpener', function( event ) {
 
-                tmcGdprShell.elems.acceptancesOpenerRootEl.addClass( 'isHidden' );
+                if( tmcGdprShell.elems.acceptancesOpenerRootEl ) {
+                    tmcGdprShell.elems.acceptancesOpenerRootEl.addClass('isHidden');
+                }
 
             } );
 
@@ -168,6 +180,8 @@ jQuery( document ).ready( function( $ ){
 
             if( wpCookies.get( 'tmcGdprShellVersion' ) !== tmcGdprShell.version ){
                 $( document ).trigger( 'tmcGdprShell:openBase' );
+            } else {
+                $( document ).trigger( 'tmcGdprShell:openAcceptancesOpener' );
             }
 
         }
