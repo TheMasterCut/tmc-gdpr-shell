@@ -67,6 +67,15 @@ class Options extends IComponent {
 
 	}
 
+	/**
+	 * @return string|null
+	 */
+	public function getCookieBarContent() {
+
+		return $this::s()->options->get( 'cookieBar/content' );
+
+	}
+
 	//  ================================================================================
 	//  ACTIONS
 	//  ================================================================================

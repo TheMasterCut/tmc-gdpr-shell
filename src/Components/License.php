@@ -18,9 +18,9 @@ class License extends LicenseManagerSLM {
 	 */
 	protected function onSetUp() {
 
-		$this->registerNotices();
-		$this->registerAutomaticChecker();
-		$this->registerAPFForm( 'tmc_gdpr_shell_apf', 'tmc_gdpr_shell_settings', 'tools' );
+//		$this->registerNotices();
+//		$this->registerAutomaticChecker();
+//		$this->registerAPFForm( 'tmc_gdpr_shell_apf', 'tmc_gdpr_shell_settings', 'tools' );
 
 	}
 

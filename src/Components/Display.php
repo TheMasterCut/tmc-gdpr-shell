@@ -44,13 +44,13 @@ class Display extends IComponent {
 	 *
 	 * @return string
 	 */
-	public function getDisplayOfBasePopup( $isHidden = false ) {
+	public function getDisplayOfCookiePopup( $isHidden = false ) {
 
 		//  Prepare classes.
 
 		$rootElClasses = array_filter(
 			array(
-				'tmc_gdpr_shell_base_popup',
+				'tmc_gdpr_shell_cookie_popup',
 				$isHidden ? 'isHidden' : ''
 			)
 		);
@@ -61,12 +61,12 @@ class Display extends IComponent {
 		?>
 
         <div class="<?php echo implode( ' ', $rootElClasses ); ?>" data-version="<?php echo App::i()->options->getAcceptancesVersion(); ?>">
-            <div class="tmc_gdpr_shell_base_inside">
+            <div class="tmc_gdpr_shell_cookie_inside">
 
-                <div class="tmc_gdpr_shell_base_text">
-                    Używamy plików cookie, aby zapewnić najlepszą jakość na naszej stronie. Więcej informacji o plikach cookie, z których korzystamy, lub o ich wyłączeniu znajdziesz w ustawieniach. Pamiętaj zawsze możesz je zmienić.
+                <div class="tmc_gdpr_shell_cookie_text">
+                    <?php echo App::i()->options->getCookieBarContent(); ?>
                 </div>
-                <div class="tmc_gdpr_shell_base_btns">
+                <div class="tmc_gdpr_shell_cookie_btns">
                     <button class="secondary" data-tmcGdprShell-click="openSettings closeBase">Ustawienia</button>
                     <button class="primary" data-tmcGdprShell-click="acceptAll closeBase">Akceptuj</button>
                 </div>
@@ -192,7 +192,7 @@ class Display extends IComponent {
 	 */
 	public function _a_printPopupDisplayInFooter() {
 
-	    echo $this->getDisplayOfBasePopup( true );
+	    echo $this->getDisplayOfCookiePopup( true );
 		echo $this->getDisplayOfSettingsPopup( true );
 
 	}

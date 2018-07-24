@@ -22,7 +22,7 @@ jQuery( document ).ready( function( $ ){
 
         'elems' :                   {
             "settingsPopupRootEl" :     null,
-            "basePopupRootEl" :         null
+            "cookiePopupRootEl" :       null
         },
         'version' :                 null,
 
@@ -47,8 +47,8 @@ jQuery( document ).ready( function( $ ){
         initProperties :            function() {
 
             tmcGdprShell.elems.settingsPopupRootEl  = $( '.tmc_gdpr_shell_settings_popup' );
-            tmcGdprShell.elems.basePopupRootEl      = $( '.tmc_gdpr_shell_base_popup' );
-            tmcGdprShell.version                    = tmcGdprShell.elems.basePopupRootEl.attr( 'data-version' );
+            tmcGdprShell.elems.cookiePopupRootEl    = $( '.tmc_gdpr_shell_cookie_popup' );
+            tmcGdprShell.version                    = tmcGdprShell.elems.cookiePopupRootEl.attr( 'data-version' );
 
         },
 
@@ -65,7 +65,7 @@ jQuery( document ).ready( function( $ ){
 
             $( document ).on( 'tmcGdprShell:openBase', function( event ) {
 
-                tmcGdprShell.elems.basePopupRootEl.removeClass( 'isHidden' );
+                tmcGdprShell.elems.cookiePopupRootEl.removeClass( 'isHidden' );
 
             } );
 
@@ -75,7 +75,7 @@ jQuery( document ).ready( function( $ ){
 
             $( document ).on( 'tmcGdprShell:closeBase', function( event ) {
 
-                tmcGdprShell.elems.basePopupRootEl.addClass( 'isHidden' );
+                tmcGdprShell.elems.cookiePopupRootEl.addClass( 'isHidden' );
 
             } );
 

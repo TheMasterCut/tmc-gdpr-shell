@@ -48,6 +48,12 @@ class TabTools extends AdminPageTab {
 
 		$this->pageFactory->addSettingSections(
 			array(
+				'section_id'        =>  'cookieBar',
+				'title'             =>  __( 'Cookie banner', 'tmc_gdpr_shell' ),
+				'page_slug'         =>  $this->pageSlug,
+				'tab_slug'          =>  $this->tabSlug,
+			),
+			array(
 				'section_id'        =>  'control',
 				'title'             =>  __( 'Control', 'tmc_gdpr_shell' ),
 				'page_slug'         =>  $this->pageSlug,
@@ -58,6 +64,20 @@ class TabTools extends AdminPageTab {
 		//  ----------------------------------------
 		//  Fields
 		//  ----------------------------------------
+
+		$this->pageFactory->addSettingFields(
+			'cookieBar',
+			array(
+				'field_id'          =>  'content',
+				'type'              =>  'textarea',
+				'title'             =>  __( 'Content', 'tmc_gdpr_shell' ),
+				'rich'              =>  true,
+				'attributes'        =>  array(
+					'cols'              =>  '100',
+					'rows'              =>  '10'
+				)
+			)
+		);
 
 		$this->pageFactory->addSettingFields(
 			'control',
