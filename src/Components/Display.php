@@ -231,7 +231,10 @@ class Display extends IComponent {
 
 	    echo $this->getDisplayOfCookiePopup( true );
 		echo $this->getDisplayOfSettingsPopup( true );
-		echo $this->getDisplayOfAcceptancesOpener( true );
+
+		if( App::i()->options->isAcceptancesOpenerEnabled() ){
+			echo $this->getDisplayOfAcceptancesOpener( true );
+        }
 
 	}
 
