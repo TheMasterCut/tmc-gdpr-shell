@@ -49,7 +49,7 @@ class TabTools extends AdminPageTab {
 		$this->pageFactory->addSettingSections(
 			array(
 				'section_id'        =>  'cookieBar',
-				'title'             =>  __( 'Cookie banner', 'tmc_gdpr_shell' ),
+				'title'             =>  __( 'Cookie bar', 'tmc_gdpr_shell' ),
 				'page_slug'         =>  $this->pageSlug,
 				'tab_slug'          =>  $this->tabSlug,
 			),
