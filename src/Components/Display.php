@@ -9,6 +9,7 @@ namespace tmc\gdprshell\src\Components;
 
 use shellpress\v1_2_6\src\Shared\Components\IComponent;
 use tmc\gdprshell\src\App;
+use tmc\gdprshell\src\Models\Acceptance;
 
 class Display extends IComponent {
 
@@ -117,7 +118,7 @@ class Display extends IComponent {
                         $acceptedIds    = (array) App::i()->acceptances->getAcceptancesIdsFromCookie();
                         $allAcceptances = (array) App::i()->acceptances->getAllAcceptances();
 
-                        foreach( $allAcceptances as $acceptance ){
+                        foreach( $allAcceptances as $acceptance ){ /** @var $acceptance Acceptance */
 
                             //  Should checkbox be checked?
 
@@ -131,7 +132,11 @@ class Display extends IComponent {
 
                             echo '<div class="tmc_gdpr_shell_settings_list_row">';
                             echo sprintf( '<h1>%1$s</h1>', apply_filters( 'the_title', $acceptance->getTitle() ) );
-	                        echo $acceptance->getCheckboxHtml( $isChecked );
+
+                            if( $acceptance->getHeaderCode() || $acceptance->getFooterCode() ){
+	                            echo $acceptance->getCheckboxHtml( $isChecked );
+                            }
+
                             echo sprintf( '<desc>%1$s</desc>', apply_filters( 'the_content', $acceptance->getContent() ) );
                             echo '</div>';
 
@@ -178,7 +183,7 @@ class Display extends IComponent {
         <div class="<?php echo implode( ' ', $rootElClasses ); ?>" data-tmcGdprShell-click="openSettings closeAcceptancesOpener">
 
             <div class="tmc_gdpr_shell_acceptances_opener_icon">
-                <img src="<?php echo $this::s()->getUrl( 'assets/img/settings.png' ); ?>" alt="">
+                <img src="<?php echo $this::s()->getUrl( 'assets/img/settings_green.png' ); ?>" alt="">
             </div>
             <div class="tmc_gdpr_shell_acceptances_opener_description">
                 Zmień ustawienia cookies

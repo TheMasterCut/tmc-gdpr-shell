@@ -80,8 +80,8 @@ body.noScroll {
         font-size: 1em;
 
         &.primary {
-            background: #2980b9;
-            color: #ecf0f1;
+            background: #c4d600;
+            color: #000;
         }
 
         &.secondary {
@@ -258,7 +258,7 @@ body.noScroll {
 
     > input:checked ~ div {
 
-        background: #2ecc71;
+        background: #c4d600;
 
     }
 
@@ -291,8 +291,8 @@ body.noScroll {
         font-size: 1.3em;
 
         &.primary {
-            background: #2980b9;
-            color: #ecf0f1;
+            background: #c4d600;
+            color: #000;
         }
 
         &.secondary {
