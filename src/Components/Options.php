@@ -26,6 +26,9 @@ class Options extends IComponent {
 			'control'                           =>  array(
 				'acceptancesUpdateBehaviour'        =>  'resetEveryTime',
 				'acceptancesVersion'                =>  time()
+			),
+			'acceptancesOpener'                 =>  array(
+				'isEnabled'                         =>  true
 			)
 		) );
 
@@ -73,6 +76,15 @@ class Options extends IComponent {
 	public function getCookieBarContent() {
 
 		return $this::s()->options->get( 'cookieBar/content' );
+
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isAcceptancesOpenerEnabled() {
+
+		return (bool) $this::s()->options->get( 'acceptancesOpener/isEnabled' );
 
 	}
 

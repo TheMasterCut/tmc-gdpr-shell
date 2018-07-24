@@ -22,7 +22,8 @@ jQuery( document ).ready( function( $ ){
 
         'elems' :                   {
             "settingsPopupRootEl" :     null,
-            "cookiePopupRootEl" :       null
+            "cookiePopupRootEl" :       null,
+            "acceptancesOpenerRootEl" : null
         },
         'version' :                 null,
 
@@ -46,9 +47,10 @@ jQuery( document ).ready( function( $ ){
          */
         initProperties :            function() {
 
-            tmcGdprShell.elems.settingsPopupRootEl  = $( '.tmc_gdpr_shell_settings_popup' );
-            tmcGdprShell.elems.cookiePopupRootEl    = $( '.tmc_gdpr_shell_cookie_popup' );
-            tmcGdprShell.version                    = tmcGdprShell.elems.cookiePopupRootEl.attr( 'data-version' );
+            tmcGdprShell.elems.settingsPopupRootEl      = $( '.tmc_gdpr_shell_settings_popup' );
+            tmcGdprShell.elems.cookiePopupRootEl        = $( '.tmc_gdpr_shell_cookie_popup' );
+            tmcGdprShell.elems.acceptancesOpenerRootEl  = $( '.tmc_gdpr_shell_acceptances_opener' );
+            tmcGdprShell.version                        = tmcGdprShell.elems.cookiePopupRootEl.attr( 'data-version' );
 
         },
 
@@ -98,6 +100,26 @@ jQuery( document ).ready( function( $ ){
 
                 tmcGdprShell.elems.settingsPopupRootEl.addClass( 'isHidden' );
                 document.body.classList.remove( 'noScroll' );
+
+            } );
+
+            //  ----------------------------------------
+            //  Open acceptance opener
+            //  ----------------------------------------
+
+            $( document ).on( 'tmcGdprShell:openAcceptanceOpener', function( event ) {
+
+                tmcGdprShell.elems.acceptancesOpenerRootEl.removeClass( 'isHidden' );
+
+            } );
+
+            //  ----------------------------------------
+            //  Close acceptance opener
+            //  ----------------------------------------
+
+            $( document ).on( 'tmcGdprShell:closeAcceptanceOpener', function( event ) {
+
+                tmcGdprShell.elems.acceptancesOpenerRootEl.addClass( 'isHidden' );
 
             } );
 

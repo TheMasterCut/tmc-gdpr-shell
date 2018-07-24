@@ -68,7 +68,7 @@ class Display extends IComponent {
                 </div>
                 <div class="tmc_gdpr_shell_cookie_btns">
                     <button class="secondary" data-tmcGdprShell-click="openSettings closeBase">Ustawienia</button>
-                    <button class="primary" data-tmcGdprShell-click="acceptAll closeBase">Akceptuj</button>
+                    <button class="primary" data-tmcGdprShell-click="acceptAll openAcceptanceOpener closeBase">Akceptuj</button>
                 </div>
 
             </div>
@@ -104,7 +104,7 @@ class Display extends IComponent {
 
 		<div class="<?php echo implode( ' ', $rootElClasses ); ?>">
 			<div class="tmc_gdpr_shell_settings_close">
-				<span data-tmcGdprShell-click="acceptAll closeSettings"></span>
+				<span data-tmcGdprShell-click="acceptAll closeSettings openAcceptanceOpener"></span>
 			</div>
 			<div class="tmc_gdpr_shell_settings_inside">
 
@@ -141,7 +141,7 @@ class Display extends IComponent {
 
                     </div>
                     <div class="tmc_gdpr_shell_settings_btns">
-                        <button type="submit" class="primary" data-tmcGdprShell-click="closeSettings">Zapisz ustawienia</button>
+                        <button type="submit" class="primary" data-tmcGdprShell-click="closeSettings openAcceptanceOpener">Zapisz ustawienia</button>
                     </div>
 
                 </form>
@@ -153,6 +153,43 @@ class Display extends IComponent {
         return ob_get_clean();
 
 	}
+
+	/**
+	 * Gets display of settings popup as HTML string.
+	 *
+	 * @param bool $isHidden
+	 */
+	public function getDisplayOfAcceptancesOpener( $isHidden = false ) {
+
+		//  Prepare classes.
+
+		$rootElClasses = array_filter(
+			array(
+				'tmc_gdpr_shell_acceptances_opener',
+				$isHidden ? 'isHidden' : ''
+			)
+		);
+
+		//  Prepare whole HTML output.
+
+		ob_start();
+		?>
+
+        <div class="<?php echo implode( ' ', $rootElClasses ); ?>" data-tmcGdprShell-click="openSettings closeAcceptanceOpener">
+
+            <div class="tmc_gdpr_shell_acceptances_opener_icon">
+                <img src="<?php echo $this::s()->getUrl( 'assets/img/settings.png' ); ?>" alt="">
+            </div>
+            <div class="tmc_gdpr_shell_acceptances_opener_description">
+                Zmień ustawienia cookies
+            </div>
+
+        </div>
+
+		<?php
+		return ob_get_clean();
+
+    }
 
 	//  ================================================================================
 	//  ACTIONS
@@ -194,6 +231,7 @@ class Display extends IComponent {
 
 	    echo $this->getDisplayOfCookiePopup( true );
 		echo $this->getDisplayOfSettingsPopup( true );
+		echo $this->getDisplayOfAcceptancesOpener( true );
 
 	}
 

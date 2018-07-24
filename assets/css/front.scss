@@ -303,3 +303,56 @@ body.noScroll {
     }
 
 }
+
+.#{$pluginPrefix}_acceptances_opener {
+
+    display: block;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    margin: 0 0 10px 10px;
+    padding: 5px;
+    visibility: visible;
+    opacity: 1;
+    transition: 500ms all;
+    z-index: 999999;
+    background: #fff;
+    border: 1px solid #2c3e50;
+    cursor: pointer;
+
+    &.isHidden {
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+    }
+
+    &:hover {
+
+        .#{$pluginPrefix}_acceptances_opener_description {
+
+            display: inline-block;
+
+        }
+
+    }
+
+}
+
+.#{$pluginPrefix}_acceptances_opener_icon {
+
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1em;
+
+}
+
+.#{$pluginPrefix}_acceptances_opener_description {
+
+    display: none;
+    vertical-align: middle;
+    line-height: 1em;
+    padding: 0 1em;
+
+}

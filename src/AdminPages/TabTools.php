@@ -10,6 +10,7 @@ namespace tmc\gdprshell\src\AdminPages;
 use shellpress\v1_2_6\src\Shared\AdminPageFramework\AdminPageTab;
 use tmc\gdprshell\src\App;
 use TMC_v1_0_3_AdminPageFramework;
+use TMC_v1_0_3_ToggleCustomFieldType;
 
 class TabTools extends AdminPageTab {
 
@@ -43,6 +44,14 @@ class TabTools extends AdminPageTab {
 	public function load() {
 
 		//  ----------------------------------------
+		//  Custom field types
+		//  ----------------------------------------
+
+		App::s()->requireFile( 'lib/tmc-admin-page-framework/custom-field-types/toggle-custom-field-type/ToggleCustomFieldType.php' );
+
+		new TMC_v1_0_3_ToggleCustomFieldType();
+
+		//  ----------------------------------------
 		//  Sections
 		//  ----------------------------------------
 
@@ -52,6 +61,15 @@ class TabTools extends AdminPageTab {
 				'title'             =>  __( 'Cookie bar', 'tmc_gdpr_shell' ),
 				'page_slug'         =>  $this->pageSlug,
 				'tab_slug'          =>  $this->tabSlug,
+			),
+			array(
+				'section_id'        =>  'acceptancesOpener',
+				'title'             =>  __( 'Acceptances opener', 'tmc_gdpr_shell' ),
+				'page_slug'         =>  $this->pageSlug,
+				'tab_slug'          =>  $this->tabSlug,
+				'description'       =>  array(
+					__( 'If user close cookie bar, it will provide the way to edit settings later.', 'tmc_gdpr_shell' )
+				)
 			),
 			array(
 				'section_id'        =>  'control',
@@ -64,6 +82,16 @@ class TabTools extends AdminPageTab {
 		//  ----------------------------------------
 		//  Fields
 		//  ----------------------------------------
+
+		$this->pageFactory->addSettingFields(
+			'acceptancesOpener',
+			array(
+				'field_id'          =>  'isEnabled',
+				'type'              =>  'toggle',
+				'title'             =>  __( 'Enabled', 'tmc_gdpr_shell' ),
+				'theme'             =>  'light',
+			)
+		);
 
 		$this->pageFactory->addSettingFields(
 			'cookieBar',
