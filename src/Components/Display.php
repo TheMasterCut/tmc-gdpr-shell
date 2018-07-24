@@ -104,7 +104,7 @@ class Display extends IComponent {
 
 		<div class="<?php echo implode( ' ', $rootElClasses ); ?>">
 			<div class="tmc_gdpr_shell_settings_close">
-				<span data-tmcGdprShell-click="acceptAll closeSettings openAcceptancesOpener"></span>
+				<span data-tmcGdprShell-click="acceptChosen closeSettings openAcceptancesOpener"></span>
 			</div>
 			<div class="tmc_gdpr_shell_settings_inside">
 

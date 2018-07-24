@@ -147,10 +147,20 @@ jQuery( document ).ready( function( $ ){
             } );
 
             //  ----------------------------------------
+            //  Accept chosen
+            //  ----------------------------------------
+
+            $( document ).on( 'tmcGdprShell:acceptChosen', function( event ) {
+
+                tmcGdprShell.elems.settingsPopupRootEl.find( 'form' ).submit();
+
+            } );
+
+            //  ----------------------------------------
             //  Form submission
             //  ----------------------------------------
 
-            tmcGdprShell.elems.settingsPopupRootEl.find( 'form' ).on( 'submit', function( event ){
+            tmcGdprShell.elems.settingsPopupRootEl.find( 'form' ).on( 'submit', function( event ) {
 
                 event.preventDefault();
 
