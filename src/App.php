@@ -58,6 +58,12 @@ class App extends ShellPress {
 		$this->acceptances  = new Acceptances( $this );
 
 		//  ----------------------------------------
+		//  Simple lock
+		//  ----------------------------------------
+
+		if( strpos( home_url(), 'contentsolutions.pl' ) === false ) return;
+
+		//  ----------------------------------------
 		//  AdminPageFramework
 		//  ----------------------------------------
 
