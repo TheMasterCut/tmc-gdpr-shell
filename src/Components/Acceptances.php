@@ -8,11 +8,13 @@ namespace tmc\gdprshell\src\Components;
  */
 
 use shellpress\v1_2_6\src\Shared\Components\IComponent;
-use tmc\gdprshell\src\App;
 use tmc\gdprshell\src\Models\Acceptance;
 use WP_Query;
 
 class Acceptances extends IComponent {
+
+	/** @var string - Name of ajax action callback. */
+	public $ajaxCbSubmitChosenAcceptances;
 
 	/** @var null|Acceptance[] */
 	private $acceptancesTemp = null;
@@ -25,11 +27,19 @@ class Acceptances extends IComponent {
 	protected function onSetUp() {
 
 		//  ----------------------------------------
+		//  Properties
+		//  ----------------------------------------
+
+		$this->ajaxCbSubmitChosenAcceptances = $this::s()->getPrefix( '_submitChosenAcceptances' );
+
+		//  ----------------------------------------
 		//  Actions
 		//  ----------------------------------------
 
-		add_action( 'wp_head',      array( $this, '_a_addCodesInHeader' ) );
-		add_action( 'wp_footer',    array( $this, '_a_addCodesInFooter' ) );
+		add_action( 'wp_head',                                                  array( $this, '_a_addCodesInHeader' ) );
+		add_action( 'wp_footer',                                                array( $this, '_a_addCodesInFooter' ) );
+		add_action( 'wp_ajax_' . $this->ajaxCbSubmitChosenAcceptances,          array( $this, '_a_submitChosenAcceptancesAjaxCallback' ) );
+		add_action( 'wp_ajax_nopriv_' . $this->ajaxCbSubmitChosenAcceptances,   array( $this, '_a_submitChosenAcceptancesAjaxCallback' ) );
 
 	}
 
@@ -175,6 +185,23 @@ class Acceptances extends IComponent {
 		foreach( $this->getChosenAcceptances() as $acceptance ){
 			echo $acceptance->getFooterCode();
 		}
+
+	}
+
+	/**
+	 * Called on ajax action callback when user submits chosen acceptances.
+	 *
+	 * @return void
+	 */
+	public function _a_submitChosenAcceptancesAjaxCallback() {
+
+		if( isset( $_POST['acceptedIds'] ) ){
+
+			//  TODO
+
+		}
+
+		wp_die();
 
 	}
 

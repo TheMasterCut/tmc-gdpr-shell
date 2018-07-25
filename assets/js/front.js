@@ -141,6 +141,8 @@ jQuery( document ).ready( function( $ ){
 
             $( document ).on( 'tmcGdprShell:acceptAll', function( event ) {
 
+                $.post( $( this ).attr( 'action' ), { 'acceptedIds' : [ 'all' ] } );    //  Call server. We don't need response.
+
                 wpCookies.set( 'tmcGdprShellAccepted', 'all', tmcGdprShell.getDaysAfterNow( 365 ) );
                 wpCookies.set( 'tmcGdprShellVersion', tmcGdprShell.version, tmcGdprShell.getDaysAfterNow( 365 ) );
 
@@ -173,6 +175,8 @@ jQuery( document ).ready( function( $ ){
                     }
 
                 } );
+
+                $.post( $( this ).attr( 'action' ), { 'acceptedIds' : acceptedScriptIds } );    //  Call server. We don't need response.
 
                 wpCookies.set( 'tmcGdprShellAccepted', acceptedScriptIds.join( ',' ), tmcGdprShell.getDaysAfterNow( 365 ) );
                 wpCookies.set( 'tmcGdprShellVersion', tmcGdprShell.version, tmcGdprShell.getDaysAfterNow( 365 ) );

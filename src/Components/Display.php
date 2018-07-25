@@ -109,7 +109,7 @@ class Display extends IComponent {
 			</div>
 			<div class="tmc_gdpr_shell_settings_inside">
 
-                <form class="tmc_gdpr_shell_settings_form">
+                <form class="tmc_gdpr_shell_settings_form" action="<?php echo add_query_arg( array( 'action' => App::i()->acceptances->ajaxCbSubmitChosenAcceptances ), get_admin_url( null, 'admin-ajax.php' ) ); ?>">
 
                     <div class="tmc_gdpr_shell_settings_list">
 
