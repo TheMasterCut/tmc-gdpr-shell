@@ -2,7 +2,7 @@
 /**
  * Plugin Name: GDPR Shell TMC
  * Description: Feature-rich plugin that laverage all gdpr requirements.
- * Version:     1.0.3
+ * Version:     1.0.4
  * Plugin URI:  https://themastercut.co
  * Author:      TheMasterCut.co
  * License:     GPL-2.0+
@@ -44,4 +44,4 @@ use tmc\gdprshell\src\App;
 require_once( __DIR__ . '/lib/ShellPress/ShellPress.php' );
 require_once( __DIR__ . '/src/App.php' );
 
-App::initShellPress( __FILE__, 'tmc_gdpr_shell', '1.0.3' );   //  <--- Remember to always change version here
+App::initShellPress( __FILE__, 'tmc_gdpr_shell', '1.0.4' );   //  <--- Remember to always change version here

@@ -183,7 +183,7 @@ class Display extends IComponent {
         <div class="<?php echo implode( ' ', $rootElClasses ); ?>" data-tmcGdprShell-click="openSettings closeAcceptancesOpener">
 
             <div class="tmc_gdpr_shell_acceptances_opener_icon">
-                <img src="<?php echo $this::s()->getUrl( 'assets/img/settings_green.png' ); ?>" alt="">
+                <img src="<?php echo $this::s()->getUrl( 'assets/img/settings_green_16x16.png' ); ?>" alt="">
             </div>
             <div class="tmc_gdpr_shell_acceptances_opener_description">
                 Zmień ustawienia cookies

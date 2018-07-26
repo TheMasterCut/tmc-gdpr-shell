@@ -23,6 +23,8 @@ class Acceptance extends IPostModel {
 
 		$html = '<label class="tmc_gdpr_shell_settings_checkbox">';
 		$html .= sprintf( '<input type="checkbox" name="acceptanceId" value="%1$s" %2$s />', $this->getId(), checked( true, $isChecked, false ) );
+		$html .= sprintf( '<span class="toggleOn">Włączone</span>' );
+		$html .= sprintf( '<span class="toggleOff">Wyłączone</span>' );
 		$html .= '<div></div>';
 		$html .= '<i></i>';
 		$html .= '</label>';
