@@ -191,13 +191,21 @@ class Acceptances extends IComponent {
 	/**
 	 * Called on ajax action callback when user submits chosen acceptances.
 	 *
+	 * @internal
+	 *
 	 * @return void
 	 */
 	public function _a_submitChosenAcceptancesAjaxCallback() {
 
 		if( isset( $_POST['acceptedIds'] ) ){
 
-			//  TODO
+			/**
+			 * Action called after user saved settings.
+			 * May be used to store data in database.
+			 *
+			 * @param int[]|string[]
+			 */
+			do_action( 'tmc_gdpr_shell_submit_chosen_acceptances', (array) $_POST['acceptedIds'] );
 
 		}
 

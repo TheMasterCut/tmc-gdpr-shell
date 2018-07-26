@@ -52,10 +52,10 @@ class App extends ShellPress {
 		//  ----------------------------------------
 
 		$this->options      = new Options( $this );
-		$this->postTypes    = new PostTypes( $this );
 		$this->license      = new License( $this );
-		$this->display      = new Display( $this );
+		$this->postTypes    = new PostTypes( $this );
 		$this->acceptances  = new Acceptances( $this );
+		$this->display      = new Display( $this );
 
 		//  ----------------------------------------
 		//  Simple lock
