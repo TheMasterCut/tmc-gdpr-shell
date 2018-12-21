@@ -141,6 +141,8 @@ jQuery( document ).ready( function( $ ){
 
             $( document ).on( 'tmcGdprShell:acceptAll', function( event ) {
 
+                tmcGdprShell.elems.settingsPopupRootEl.find( '[name="acceptanceId"]' ).prop( 'checked', true ); //  Accept on front-end.
+
                 $.post( $( this ).attr( 'action' ), { 'acceptedIds' : [ 'all' ] } );    //  Call server. We don't need response.
 
                 wpCookies.set( 'tmcGdprShellAccepted', 'all', tmcGdprShell.getDaysAfterNow( 365 ) );
