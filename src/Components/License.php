@@ -7,9 +7,9 @@ namespace tmc\gdprshell\src\Components;
  * Time: 11:55
  */
 
-use shellpress\v1_2_6\src\Shared\Components\LicenseManagerSLM;
+use shellpress\v1_3_2\src\Shared\Components\IComponentLicenseManagerSLM;
 
-class License extends LicenseManagerSLM {
+class License extends IComponentLicenseManagerSLM {
 
 	/**
 	 * Called on creation of component.

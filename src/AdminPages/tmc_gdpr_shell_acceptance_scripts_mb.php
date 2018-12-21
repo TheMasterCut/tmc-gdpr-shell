@@ -9,10 +9,10 @@ namespace tmc\gdprshell\src\AdminPages;
 
 use tmc\gdprshell\src\App;
 use tmc\gdprshell\src\Models\Acceptance;
-use TMC_v1_0_3_AceCustomFieldType;
-use TMC_v1_0_3_AdminPageFramework_MetaBox;
+use TMC_v1_0_4_AceCustomFieldType;
+use TMC_v1_0_4_AdminPageFramework_MetaBox;
 
-class tmc_gdpr_shell_acceptance_scripts_mb extends TMC_v1_0_3_AdminPageFramework_MetaBox {
+class tmc_gdpr_shell_acceptance_scripts_mb extends TMC_v1_0_4_AdminPageFramework_MetaBox {
 
 	public function load() {
 
@@ -21,7 +21,7 @@ class tmc_gdpr_shell_acceptance_scripts_mb extends TMC_v1_0_3_AdminPageFramework
 		//  ----------------------------------------
 
 		$this->enqueueStyle(
-			App::s()->getUrl( 'lib/ShellPress/assets/css/AdminPage/style.css' ),
+			App::s()->getUrl( 'lib/ShellPress/assets/css/AdminPageFramework/SPAdminPageFramework.css' ),
 			array( Acceptance::POST_TYPE ),
 			array( 'version' => App::s()->getFullPluginVersion() )
 		);
@@ -32,7 +32,7 @@ class tmc_gdpr_shell_acceptance_scripts_mb extends TMC_v1_0_3_AdminPageFramework
 
 		App::s()->requireFile( 'lib/tmc-admin-page-framework/custom-field-types/ace-custom-field-type/AceCustomFieldType.php' );
 
-		new TMC_v1_0_3_AceCustomFieldType();
+		new TMC_v1_0_4_AceCustomFieldType();
 
 		//  ----------------------------------------
 		//  Sections

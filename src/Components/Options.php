@@ -7,7 +7,7 @@ namespace tmc\gdprshell\src\Components;
  * Time: 14:38
  */
 
-use shellpress\v1_2_6\src\Shared\Components\IComponent;
+use shellpress\v1_3_2\src\Shared\Components\IComponent;
 
 class Options extends IComponent {
 

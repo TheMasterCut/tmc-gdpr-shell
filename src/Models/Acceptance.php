@@ -7,7 +7,7 @@ namespace tmc\gdprshell\src\Models;
  * Time: 13:42
  */
 
-use shellpress\v1_2_6\src\Shared\StorageModels\IPostModel;
+use shellpress\v1_3_2\src\Shared\StorageModels\IPostModel;
 use tmc\gdprshell\src\App;
 
 class Acceptance extends IPostModel {

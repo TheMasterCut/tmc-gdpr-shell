@@ -7,7 +7,7 @@ namespace tmc\gdprshell\src;
  * Time: 13:06
  */
 
-use shellpress\v1_2_6\ShellPress;
+use shellpress\v1_3_2\ShellPress;
 use tmc\gdprshell\src\AdminPages\tmc_gdpr_shell_acceptance_scripts_mb;
 use tmc\gdprshell\src\Components\Display;
 use tmc\gdprshell\src\Components\License;

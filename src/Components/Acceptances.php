@@ -7,7 +7,7 @@ namespace tmc\gdprshell\src\Components;
  * Time: 12:30
  */
 
-use shellpress\v1_2_6\src\Shared\Components\IComponent;
+use shellpress\v1_3_2\src\Shared\Components\IComponent;
 use tmc\gdprshell\src\Models\Acceptance;
 use WP_Query;
 

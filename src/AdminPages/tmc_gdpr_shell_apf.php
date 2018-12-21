@@ -11,7 +11,7 @@ use tmc\gdprshell\src\Models\Acceptance;
  * Time: 13:58
  */
 
-class tmc_gdpr_shell_apf extends TMC_v1_0_3_AdminPageFramework {
+class tmc_gdpr_shell_apf extends TMC_v1_0_4_AdminPageFramework {
 
 	/** @var string */
 	public $pageSlug;
@@ -47,7 +47,7 @@ class tmc_gdpr_shell_apf extends TMC_v1_0_3_AdminPageFramework {
 		//  ----------------------------------------
 
 		$this->enqueueStyle(
-			App::s()->getUrl( 'lib/ShellPress/assets/css/AdminPage/style.css' ),
+			App::s()->getUrl( 'lib/ShellPress/assets/css/AdminPageFramework/SPAdminPageFramework.css' ),
 			'',
 			'',
 			array( 'version' => App::s()->getFullPluginVersion() )

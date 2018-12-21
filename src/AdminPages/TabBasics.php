@@ -7,7 +7,7 @@ namespace tmc\gdprshell\src\AdminPages;
  * Time: 11:37
  */
 
-use shellpress\v1_2_6\src\Shared\AdminPageFramework\AdminPageTab;
+use shellpress\v1_3_2\src\Shared\AdminPageFramework\AdminPageTab;
 
 class TabBasics extends AdminPageTab {
 

@@ -7,7 +7,7 @@ namespace tmc\gdprshell\src\AdminPages;
  * Time: 12:00
  */
 
-use shellpress\v1_2_6\src\Shared\AdminPageFramework\AdminPageTab;
+use shellpress\v1_3_2\src\Shared\AdminPageFramework\AdminPageTab;
 use tmc\gdprshell\src\App;
 use TMC_v1_0_3_AdminPageFramework;
 use TMC_v1_0_3_ToggleCustomFieldType;
